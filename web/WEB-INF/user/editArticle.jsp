@@ -16,8 +16,8 @@
         <br>
         <form action="updateArticle" method="POST">
             <input type="hidden" name="article_id" value="${article.id}">
-            <input type="text" name="title" placeholder="Заголовок статьи" value="${article.title}">
-            <br><textarea name="article" placeholder="Текст статьи">${article.article}</textarea>
+            <input type="text" name="model" placeholder="Model" value="${article.model}">
+            <br><textarea name="mark" placeholder="Mark">${article.mark}</textarea>
             <input type="submit" value="Редактировать статью">
         </form>
         <br>

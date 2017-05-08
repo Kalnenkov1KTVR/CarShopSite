@@ -5,8 +5,8 @@
 
     <c:forEach var="article" items="${articles}">
         <article>
-            <h2>${article.title}</h2>
-            <div class="text-article"> ${fn:substring(article.article,0,300)} ... </div>
+            <h2>${article.mark} ${article.model}</h2>
+            <div class="text-article"> ${fn:substring(article.model,0,300)} ... </div>
             <div class="fotter-article">
                 <span class="read"><a href="user?article_id=${article.id}"> Читать...</a></span>
                 <span class="date-article">Дата статьи: ${article.date}</span>

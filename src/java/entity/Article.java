@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author jvm
+ * @author pupil
  */
 @Entity
 public class Article implements Serializable {
@@ -32,8 +32,10 @@ public class Article implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
-    private String title;
-    private String article;
+    private String mark;
+    private String model;
+    private String carbody;
+    private String firstReg;
     private String userLogin;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
@@ -43,11 +45,29 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    public Article(String title, String article, String userLogin, Date date) {
-        this.title = title;
-        this.article = article;
+    public Article(String mark, String model, String carbody, String firstReg, String userLogin, Date date) {
+        this.mark = mark;
+        this.model = model;
+        this.carbody = carbody;
+        this.firstReg = firstReg;
         this.userLogin = userLogin;
         this.date = date;
+    }
+
+    public String getFirstReg() {
+        return firstReg;
+    }
+
+    public void setFirstReg(String firstReg) {
+        this.firstReg = firstReg;
+    }
+
+    public String getCarbody() {
+        return carbody;
+    }
+
+    public void setCarbody(String carbody) {
+        this.carbody = carbody;
     }
 
     public List<Comment> getComments() {
@@ -66,20 +86,20 @@ public class Article implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getMark() {
+        return mark;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setMark(String mark) {
+        this.mark = mark;
     }
 
-    public String getArticle() {
-        return article;
+    public String getModel() {
+        return model;
     }
 
-    public void setArticle(String article) {
-        this.article = article;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getUserLogin() {
@@ -103,8 +123,10 @@ public class Article implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.title);
-        hash = 67 * hash + Objects.hashCode(this.article);
+        hash = 67 * hash + Objects.hashCode(this.mark);
+        hash = 67 * hash + Objects.hashCode(this.model);
+        hash = 67 * hash + Objects.hashCode(this.carbody);
+        hash = 67 * hash + Objects.hashCode(this.firstReg);
         hash = 67 * hash + Objects.hashCode(this.userLogin);
         hash = 67 * hash + Objects.hashCode(this.date);
         return hash;
@@ -122,16 +144,22 @@ public class Article implements Serializable {
             return false;
         }
         final Article other = (Article) obj;
-        if (!Objects.equals(this.title, other.title)) {
+        if (!Objects.equals(this.mark, other.mark)) {
             return false;
         }
-        if (!Objects.equals(this.article, other.article)) {
+        if (!Objects.equals(this.model, other.model)) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.carbody, other.carbody)) {
+            return false;
+        }
+        if (!Objects.equals(this.firstReg, other.firstReg)) {
             return false;
         }
         if (!Objects.equals(this.userLogin, other.userLogin)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         if (!Objects.equals(this.date, other.date)) {
@@ -142,7 +170,7 @@ public class Article implements Serializable {
 
     @Override
     public String toString() {
-        return "Article{" + "id=" + id + ", title=" + title + ", article=" + article + ", author=" + userLogin + ", addArticleTime=" + date.toString() + '}';
+        return "Article{" + "id=" + id + ", mark=" + mark + ", model=" + model + ", carbody=" + carbody + ", userLogin=" + userLogin + ", date=" + date + '}';
     }
 
 }

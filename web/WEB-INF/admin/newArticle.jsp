@@ -20,57 +20,53 @@
 
         <p>${info}</p>
         <br>
-        <form action="addarticle" method="POST">
-            <input type="text" name="title" placeholder="Заголовок статьи">
-            <br><textarea name="article" placeholder="Текст статьи"></textarea>
-            <input type="submit" value="Добавить статью">
-        </form>
-        <br>
+
+
         Заголовки опубликованных статей
         <br>
         <c:forEach var="article" items="${articles}" varStatus="status">
-            <p><a href="user?article_id=${article.id}">${status.index+1}. ${article.title}</a> <a href="deletearticle?id=${article.id}">Удалить</a></p>
+            <p><a href="user?article_id=${article.id}">${status.index+1}. ${article.model}</a> <a href="deletearticle?id=${article.id}">Удалить</a></p>
         </c:forEach>
 
 
 
-        <form role="form" role="form" method="POST" action="" onsubmit="return valid()">
+        <form role="form" role="form" method="POST" action="addarticle" onsubmit="return valid()">
             <div class="row">
-                <label class="span3">Тип и тип кузова:</label>
-                <select class="span5 form-control" id="carbodyType" >
+                <label class="span3">Тип кузова:</label>
+                <select class="span5 form-control" name="carbody" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
-                    <option value="body1">Седан</option>
-                    <option value="body2">Хэтчбэк</option>
-                    <option value="body3">Пикап</option>
-                    <option value="body4">Универсал</option>
-                    <option value="body5">Внедорожник</option>
-                    <option value="body6">Кабриолет</option>
-                    <option value="body7">Купе</option>
-                    <option value="body8">Минивэн</option>
-                    <option value="body9">Родстер</option>
-                    <option value="body10">Лимузин</option>
-                    <option value="body11">Кроссовер</option>
+                    <option value="Sedan">Седан</option>
+                    <option value="Hatchback">Хэтчбэк</option>
+                    <option value="Pickup">Пикап</option>
+                    <option value="Universal">Универсал</option>
+                    <option value="Offroader">Внедорожник</option>
+                    <option value="Cabriolette">Кабриолет</option>
+                    <option value="Coupe">Купе</option>
+                    <option value="Minivan">Минивэн</option>
+                    <option value="Roadster">Родстер</option>
+                    <option value="Limousine">Лимузин</option>
+                    <option value="Crossover">Кроссовер</option>
                 </select>
             </div>
             <div class="row">
                 <label class="span3">Марка:</label>
-                <input type="text" class="span5 form-control" id="mark" >
+                <input type="text" class="span5 form-control" name="mark" >
             </div>
             <div class="row">
                 <label class="span3">Модель:</label>
-                <input type="text" class="span5 form-control" id="model" >
+                <input type="text" class="span5 form-control" name="model" >
             </div>
             <div class="row">
                 <label class="span3">Дата первичной регистрации:</label>
-                <input type="text" class="span5 form-control" id="firstReg" >
+                <input type="date" class="span5 form-control" id="firstReg" >
             </div>
             <div class="row">
                 <label class="span3">Состояние:</label>
-                <select class="span5 form-control" id="condition" >
+                <select class="span5 form-control" name="condition" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
-                    <option value="condition1">Не требует ремонта</option>
-                    <option value="condition2">Битый / не на ходу</option>
-                    <option value="condition3">На разбор целиком</option>
+                    <option value="Fine">Не требует ремонта</option>
+                    <option value="Broken">Битый / не на ходу</option>
+                    <option value="Non-repairable">На разбор целиком</option>
                 </select>
             </div>
             <div class="row">
@@ -79,52 +75,34 @@
             </div>
             <div class="row">
                 <label class="span3">Дата приобретения:</label>
-                <input type="text" class="span3 form-control" id="purchaseDate">
+                <input type="date" class="span3 form-control" id="purchaseDate">
             </div>
             <div class="row">
                 <label class="span3">Паспорт т/с:</label>
                 <select class="span3 form-control" id="passport" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
-                    <option value="passport1">Оригинал</option>
-                    <option value="passport2">Дубликат</option>
+                    <option value="Original">Оригинал</option>
+                    <option value="Duplicate">Дубликат</option>
                 </select>
             </div>
             <div class="row">
                 <label class="span3">Цвет:</label>
                 <select class="span5 form-control" id="color" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
-                    <option value="color24">бежевый</option>
-                    <option value="color8">белый</option>
-                    <option value="color21">желтый</option>
-                    <option value="color6">зеленый</option>
-                    <option value="color19">золотистый</option>
-                    <option value="color27">коричневый</option>
-                    <option value="color10">красный</option>
-                    <option value="color30">оранжевый</option>
-                    <option value="color32">розовый</option>
-                    <option value="color25">светло-бежевый</option>
-                    <option value="color22">светло-желтый</option>
-                    <option value="color7">светло-зеленый</option>
-                    <option value="color28">светло-коричневый</option>
-                    <option value="color11">светло-красный</option>
-                    <option value="color31">светло-оранжевый</option>
-                    <option value="color3">светло-синий</option>
-                    <option value="color18">светло-фиолетовый</option>
-                    <option value="color15">светло серый</option>
-                    <option value="color12">серебристый</option>
-                    <option value="color14">серый</option>
-                    <option value="color2">синий</option>
-                    <option value="color23">темно-бежевый</option>
-                    <option value="color20">темно-желтый</option>
-                    <option value="color5">темно-зеленый</option>
-                    <option value="color9">темно-красный</option>
-                    <option value="color29">темно-оранжевый</option>
-                    <option value="color1">темно-синий</option>
-                    <option value="color16">темно-фиолетовый</option>
-                    <option value="color26">темно коричневый</option>
-                    <option value="color13">темно серый </option>
-                    <option value="color17">фиолетовый</option>
-                    <option value="color4">черный</option>
+                    <option value="beige">бежевый</option>
+                    <option value="white">белый</option>
+                    <option value="yellow">желтый</option>
+                    <option value="green">зеленый</option>
+                    <option value="golden">золотистый</option>
+                    <option value="brown">коричневый</option>
+                    <option value="red">красный</option>
+                    <option value="orange">оранжевый</option>
+                    <option value="pink">розовый</option>
+                    <option value="silver">серебристый</option>
+                    <option value="grey">серый</option>
+                    <option value="blue">синий</option>
+                    <option value="violet">фиолетовый</option>
+                    <option value="black">черный</option>
                 </select>
             </div>
             <div class="row">
@@ -135,9 +113,9 @@
                 <label class="span3">Привод:</label>
                 <select class="span5 form-control" id="driveUnit" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
-                    <option value="driveunit1">Передний</option>
-                    <option value="driveunit2">Задний</option>
-                    <option value="driveunit3">Полный</option>
+                    <option value="Front">Передний</option>
+                    <option value="Rear">Задний</option>
+                    <option value="Full">Полный</option>
                 </select>
             </div>
             <div class="row">
@@ -181,17 +159,17 @@
                 <label class="span3">Коробка:</label>
                 <select class="span5 form-control" id="gear" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
-                    <option value="gear1">Механическая</option>
-                    <option value="gear2">Автомат</option>
-                    <option value="gear">Полуавтомат</option>
+                    <option value="Mech">Механическая</option>
+                    <option value="Auto">Автомат</option>
+                    <option value="Hald-auto">Полуавтомат</option>
                 </select>
             </div>
             <div class="row">
                 <label class="span3">Руль:</label>
                 <select class="span5 form-control" id="grip" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
-                    <option>Левый</option>
-                    <option>Правый</option>
+                    <option value="Left">Левый</option>
+                    <option value="Right">Правый</option>
                 </select>
             </div>
             <div class="row">

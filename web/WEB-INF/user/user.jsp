@@ -7,14 +7,14 @@
 <br>
 <c:forEach var="article" items="${articles}" varStatus="status">
     <p>
-        <a href="user?article_id=${article.id}">${status.index+1}. ${article.title}</a> 
+        <a href="user?article_id=${article.id}">${status.index+1}. ${article.model}</a> 
         <a href="deletearticle?id=${article.id}">Удалить</a>
         <a href="editArticle?article_id=${article.id}">Редактировать</a>
     </p>
 </c:forEach>
 <table class="tab-article">
 
-    <tr class="tr-article">${article.title}<td class="td-article"></td>
+    <tr class="tr-article">${article.model}<td class="td-article"></td>
         <td class="td-article"></td>
     </tr>
     <tr>
@@ -22,7 +22,7 @@
         <td class="td-article">Дата публикации: ${article.date}</td>
     </tr>
     <tr>
-        <td class="td-article" colspan="2">${article.article}</td>
+        <td class="td-article" colspan="2">${article.model}</td>
     </tr>
 
 </table>

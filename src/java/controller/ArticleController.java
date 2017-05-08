@@ -54,10 +54,13 @@ public class ArticleController extends HttpServlet {
             request.setAttribute("username", username);
             if (authBean.accessOn(regUser, "ADMINS")) {
                 if ("/addarticle".equals(userPath)) {
-                    String title = request.getParameter("title");
-                    String article = request.getParameter("article");
+                    String mark = request.getParameter("mark");
+                    String model = request.getParameter("model");
+                    String carbody = request.getParameter("carbody");                                    
+                    String firstReg = request.getParameter("firstReg");
+                    String condition = request.getParameter("condition");
                     Date date = new Date();
-                    Article newArticle = new Article(title, article, regUser.getLogin(), date);
+                    Article newArticle = new Article(mark, model, carbody, firstReg, regUser.getLogin(), date);
                     try {
                         articleFacade.create(newArticle);
                         request.setAttribute("info", "Статья успешно добавлена.");
@@ -78,12 +81,18 @@ public class ArticleController extends HttpServlet {
 
                 } else if ("/updateArticle".equals(userPath)) {
                     String articleId = request.getParameter("article_id");
-                    String title = request.getParameter("title");
-                    String article = request.getParameter("article");
+                    String mark = request.getParameter("mark");
+                    String model = request.getParameter("model");
+                    String carbody = request.getParameter("carbody"); 
+                    String firstReg = request.getParameter("firstReg");
+                    String condition = request.getParameter("condition");
                     Date date = new Date();
                     Article updateArticle = articleFacade.find(new Long(articleId));
-                    updateArticle.setTitle(title);
-                    updateArticle.setArticle(article);
+                    updateArticle.setMark(mark);
+                    updateArticle.setModel(model);
+                    updateArticle.setFirstReg(model);
+                    updateArticle.setModel(carbody);
+                    updateArticle.setFirstReg(firstReg);
                     updateArticle.setUserLogin(regUser.getLogin());
                     updateArticle.setDate(date);
                     try {
