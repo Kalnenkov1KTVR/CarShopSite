@@ -1,0 +1,12 @@
+<%@ page pageEncoding="UTF-8" %>
+<div class="row" id="article"></div>
+<footer class="row">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque maxime voluptates optio fugit sunt in?</footer>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr.js"></script>	
+<script src="scripts/controllers/controller.js"></script>
+<script src="scripts/services/httpService.js"></script>
+<script src="scripts/models/generalPage.js"></script>
+<script src="scripts/models/pageDetail.js"></script>
+<script src="scripts/index.js"></script>
+</body>

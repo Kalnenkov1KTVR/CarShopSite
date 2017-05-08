@@ -1,0 +1,270 @@
+[class*="span"] {
+    float: left;
+    display: inline;
+    margin-right: 25px;
+}
+
+.span1 {width: 10%}
+.span2 {width: 20%}
+.span3 {width: 30%}
+.span4 {width: 40%}
+.span5 {width: 50%}
+.span6 {width: 60%}
+.span7 {width: 70%}
+.span8 {width: 80%}
+.span9 {width: 90%}
+.span10 {width: 100%}
+
+.offset1 {margin-left: 10%}
+.offset2 {margin-left: 20%}
+.offset3 {margin-left: 30%}
+.offset4 {margin-left: 40%}
+.offset5 {margin-left: 50%}
+.offset6 {margin-left: 60%}
+.offset7 {margin-left: 70%}
+.offset8 {margin-left: 80%}
+.offset9 {margin-left: 90%}
+.offset10 {margin-left: 100%}
+
+/*--------------------------------------------------------------------------------------------------------------*/
+
+body {
+    font-family: 'Ubuntu', Arial;
+    margin: 0;
+    /* background-image: url(../img/dark_embroidery.png); */
+    position: relative;
+    width: 100%;
+}
+
+header {
+    display: block;
+    height: 200px;
+    /* background: url(../img/header.jpg) center; */
+    color: #700;
+    margin: 0;
+}
+
+h1 {
+    margin-top: -100px;
+    margin-left: 150px;
+    color: #fff;
+    font-size: 300%;
+    text-shadow: red 2px 2px 0, red -2px -2px 0,
+        red -2px 2px 0, red 2px -2px 0;
+}
+
+nav {
+    height: 54px;
+    background: #eee;
+    border-top: 2px dotted red;
+    border-bottom: 2px dotted red;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 2px;
+}
+
+nav ul {
+    margin-left: 120px;
+}
+
+nav ul li a, nav ul li a:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.button {
+    width: 150px;
+    height: 40px;
+    display: inline-block;
+    margin: 3px 0 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 6px;
+    background-color: #911;
+    border-color: #700;
+    font-weight: 700;
+    color: #fff;
+}
+
+.button:hover {
+    background-color: #700;
+    color: #fff;
+}
+
+.lang {
+    float: right;
+    margin: -48px 120px;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.row:after {
+    display: block;
+    content: '.'; 
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+section {
+    max-width: 960px;
+    padding: 0 20px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 0 10px;
+    border: 1px solid #700;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    box-shadow: 2px 4px 5px rgba(30,25,25,1);
+}
+
+.thumb img {
+    border-radius: 3px;
+    box-shadow: 2px 5px 5px rgba(0,0,0,.5);
+}
+
+header a h1 {
+    font: 48px;
+    margin: 0;
+}
+
+footer {
+    color: #444;
+    text-align: center;
+    border-top: 1px dotted #888;
+    padding: 25px 0;
+}
+
+#article {
+    margin-left: 25px;
+}
+
+.bold, .model, .price {
+    font-weight: 600;
+}
+
+.price {
+    color: #700;
+}
+
+.model, .price {
+    font-size: 120%;
+}
+
+.pics {
+    display: inline-block;
+}
+
+.calend {
+    margin: 50px 10px 5px;
+    width: 220px;
+    height: 150px;
+    float: right;
+}
+
+.space {
+    margin-bottom: 25px;
+}
+
+#article, #json {
+    padding: 20px 45px 15px 50px; 
+}
+
+/*--------------------------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width: 1160px) {
+
+    .lang {
+        float: right;
+        margin: -46px 10px;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+
+    nav ul li {
+        display: inline-block;
+        margin: 2px;
+    }
+
+    nav ul {
+        margin: 0;
+    }
+
+    .button {
+        max-width: 150px;
+        max-height: 40px;
+        display: inline;
+        background-color: #eee;
+        border-color: #eee;
+        font-weight: 700;
+        color: #700;
+    }
+
+    .button:hover {
+        background-color: #eee;
+        border-color: #eee;
+        color: red;
+    }
+
+    #article, #json {
+        padding: 0; 
+        margin: -10px;
+    }
+
+    .lang {
+        float: right;
+        margin-top: -34px;
+    }
+
+    .lang li:first-child {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    .button {
+        line-height: 25px;
+    }
+
+    .lang {
+        float: right;
+        margin-top: -18px;
+    }
+
+}
+
+@media only screen and (max-width: 660px) {
+
+    td {
+        width: 100%;
+        display: inline-block;
+        margin-left: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    nav {
+        height: 70px;
+    }
+
+    .lang {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+
+@media only screen and (max-width: 480px) {
+
+    nav {
+        height: 95px;
+    }
+}
