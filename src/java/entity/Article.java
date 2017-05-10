@@ -36,6 +36,28 @@ public class Article implements Serializable {
     private String model;
     private String carbody;
     private String firstReg;
+    private String carCondition;
+    private String regNumber;
+
+    private String purchaseDate;
+    private String passport;
+    private String color;
+    private Long run;
+    private String driveUnit;
+    private Long engineVolume;
+    private Long enginePower;
+    private Long dryMass;
+    private Long fullMass;
+    private Long tank;
+    private String gear;
+    private String grip;
+    private Long fuelRate;
+    private Integer seats;
+    private Integer doors;
+    private Long price;
+    private String checkTime;
+    private String moreInfo;
+
     private String userLogin;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
@@ -45,37 +67,34 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    public Article(String mark, String model, String carbody, String firstReg, String userLogin, Date date) {
+    public Article(String mark, String model, String carbody, String firstReg, String carCondition, String regNumber, String purchaseDate, String passport, String color, Long run, String driveUnit, Long engineVolume, Long enginePower, Long dryMass, Long fullMass, Long tank, String gear, String grip, Long fuelRate, Integer seats, Integer doors, Long price, String checkTime, String moreInfo, String userLogin, Date date) {
+
         this.mark = mark;
         this.model = model;
         this.carbody = carbody;
         this.firstReg = firstReg;
+        this.carCondition = carCondition;
+        this.regNumber = regNumber;
+        this.purchaseDate = purchaseDate;
+        this.passport = passport;
+        this.color = color;
+        this.run = run;
+        this.driveUnit = driveUnit;
+        this.engineVolume = engineVolume;
+        this.enginePower = enginePower;
+        this.dryMass = dryMass;
+        this.fullMass = fullMass;
+        this.tank = tank;
+        this.gear = gear;
+        this.grip = grip;
+        this.fuelRate = fuelRate;
+        this.seats = seats;
+        this.doors = doors;
+        this.price = price;
+        this.checkTime = checkTime;
+        this.moreInfo = moreInfo;
         this.userLogin = userLogin;
         this.date = date;
-    }
-
-    public String getFirstReg() {
-        return firstReg;
-    }
-
-    public void setFirstReg(String firstReg) {
-        this.firstReg = firstReg;
-    }
-
-    public String getCarbody() {
-        return carbody;
-    }
-
-    public void setCarbody(String carbody) {
-        this.carbody = carbody;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
     }
 
     public Long getId() {
@@ -102,6 +121,182 @@ public class Article implements Serializable {
         this.model = model;
     }
 
+    public String getCarbody() {
+        return carbody;
+    }
+
+    public void setCarbody(String carbody) {
+        this.carbody = carbody;
+    }
+
+    public String getFirstReg() {
+        return firstReg;
+    }
+
+    public void setFirstReg(String firstReg) {
+        this.firstReg = firstReg;
+    }
+
+    public String getCarCondition() {
+        return carCondition;
+    }
+
+    public void setCarCondition(String carCondition) {
+        this.carCondition = carCondition;
+    }
+
+    public String getRegNumber() {
+        return regNumber;
+    }
+
+    public void setRegNumber(String regNumber) {
+        this.regNumber = regNumber;
+    }
+
+    public String getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(String purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public String getPassport() {
+        return passport;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public Long getRun() {
+        return run;
+    }
+
+    public void setRun(Long run) {
+        this.run = run;
+    }
+
+    public String getDriveUnit() {
+        return driveUnit;
+    }
+
+    public void setDriveUnit(String driveUnit) {
+        this.driveUnit = driveUnit;
+    }
+
+    public Long getEngineVolume() {
+        return engineVolume;
+    }
+
+    public void setEngineVolume(Long engineVolume) {
+        this.engineVolume = engineVolume;
+    }
+
+    public Long getEnginePower() {
+        return enginePower;
+    }
+
+    public void setEnginePower(Long enginePower) {
+        this.enginePower = enginePower;
+    }
+
+    public Long getDryMass() {
+        return dryMass;
+    }
+
+    public void setDryMass(Long dryMass) {
+        this.dryMass = dryMass;
+    }
+
+    public Long getFullMass() {
+        return fullMass;
+    }
+
+    public void setFullMass(Long fullMass) {
+        this.fullMass = fullMass;
+    }
+
+    public Long getTank() {
+        return tank;
+    }
+
+    public void setTank(Long tank) {
+        this.tank = tank;
+    }
+
+    public String getGear() {
+        return gear;
+    }
+
+    public void setGear(String gear) {
+        this.gear = gear;
+    }
+
+    public String getGrip() {
+        return grip;
+    }
+
+    public void setGrip(String grip) {
+        this.grip = grip;
+    }
+
+    public Long getFuelRate() {
+        return fuelRate;
+    }
+
+    public void setFuelRate(Long fuelRate) {
+        this.fuelRate = fuelRate;
+    }
+
+    public Integer getSeats() {
+        return seats;
+    }
+
+    public void setSeats(Integer seats) {
+        this.seats = seats;
+    }
+
+    public Integer getDoors() {
+        return doors;
+    }
+
+    public void setDoors(Integer doors) {
+        this.doors = doors;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public String getCheckTime() {
+        return checkTime;
+    }
+
+    public void setCheckTime(String checkTime) {
+        this.checkTime = checkTime;
+    }
+
+    public String getMoreInfo() {
+        return moreInfo;
+    }
+
+    public void setMoreInfo(String moreInfo) {
+        this.moreInfo = moreInfo;
+    }
+
     public String getUserLogin() {
         return userLogin;
     }
@@ -110,25 +305,52 @@ public class Article implements Serializable {
         this.userLogin = userLogin;
     }
 
-    public String getDate() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.y h:m");
-        return dateFormat.format(date);
+    public Date getDate() {
+        return date;
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.id);
-        hash = 67 * hash + Objects.hashCode(this.mark);
-        hash = 67 * hash + Objects.hashCode(this.model);
-        hash = 67 * hash + Objects.hashCode(this.carbody);
-        hash = 67 * hash + Objects.hashCode(this.firstReg);
-        hash = 67 * hash + Objects.hashCode(this.userLogin);
-        hash = 67 * hash + Objects.hashCode(this.date);
+        hash = 13 * hash + Objects.hashCode(this.id);
+        hash = 13 * hash + Objects.hashCode(this.mark);
+        hash = 13 * hash + Objects.hashCode(this.model);
+        hash = 13 * hash + Objects.hashCode(this.carbody);
+        hash = 13 * hash + Objects.hashCode(this.firstReg);
+        hash = 13 * hash + Objects.hashCode(this.carCondition);
+        hash = 13 * hash + Objects.hashCode(this.regNumber);
+        hash = 13 * hash + Objects.hashCode(this.purchaseDate);
+        hash = 13 * hash + Objects.hashCode(this.passport);
+        hash = 13 * hash + Objects.hashCode(this.color);
+        hash = 13 * hash + Objects.hashCode(this.run);
+        hash = 13 * hash + Objects.hashCode(this.driveUnit);
+        hash = 13 * hash + Objects.hashCode(this.engineVolume);
+        hash = 13 * hash + Objects.hashCode(this.enginePower);
+        hash = 13 * hash + Objects.hashCode(this.dryMass);
+        hash = 13 * hash + Objects.hashCode(this.fullMass);
+        hash = 13 * hash + Objects.hashCode(this.tank);
+        hash = 13 * hash + Objects.hashCode(this.gear);
+        hash = 13 * hash + Objects.hashCode(this.grip);
+        hash = 13 * hash + Objects.hashCode(this.fuelRate);
+        hash = 13 * hash + Objects.hashCode(this.seats);
+        hash = 13 * hash + Objects.hashCode(this.doors);
+        hash = 13 * hash + Objects.hashCode(this.price);
+        hash = 13 * hash + Objects.hashCode(this.checkTime);
+        hash = 13 * hash + Objects.hashCode(this.moreInfo);
+        hash = 13 * hash + Objects.hashCode(this.userLogin);
+        hash = 13 * hash + Objects.hashCode(this.date);
         return hash;
     }
 
@@ -156,10 +378,70 @@ public class Article implements Serializable {
         if (!Objects.equals(this.firstReg, other.firstReg)) {
             return false;
         }
+        if (!Objects.equals(this.carCondition, other.carCondition)) {
+            return false;
+        }
+        if (!Objects.equals(this.regNumber, other.regNumber)) {
+            return false;
+        }
+        if (!Objects.equals(this.purchaseDate, other.purchaseDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.passport, other.passport)) {
+            return false;
+        }
+        if (!Objects.equals(this.color, other.color)) {
+            return false;
+        }
+        if (!Objects.equals(this.driveUnit, other.driveUnit)) {
+            return false;
+        }
+        if (!Objects.equals(this.gear, other.gear)) {
+            return false;
+        }
+        if (!Objects.equals(this.grip, other.grip)) {
+            return false;
+        }
+        if (!Objects.equals(this.checkTime, other.checkTime)) {
+            return false;
+        }
+        if (!Objects.equals(this.moreInfo, other.moreInfo)) {
+            return false;
+        }
         if (!Objects.equals(this.userLogin, other.userLogin)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.run, other.run)) {
+            return false;
+        }
+        if (!Objects.equals(this.engineVolume, other.engineVolume)) {
+            return false;
+        }
+        if (!Objects.equals(this.enginePower, other.enginePower)) {
+            return false;
+        }
+        if (!Objects.equals(this.dryMass, other.dryMass)) {
+            return false;
+        }
+        if (!Objects.equals(this.fullMass, other.fullMass)) {
+            return false;
+        }
+        if (!Objects.equals(this.tank, other.tank)) {
+            return false;
+        }
+        if (!Objects.equals(this.fuelRate, other.fuelRate)) {
+            return false;
+        }
+        if (!Objects.equals(this.seats, other.seats)) {
+            return false;
+        }
+        if (!Objects.equals(this.doors, other.doors)) {
+            return false;
+        }
+        if (!Objects.equals(this.price, other.price)) {
             return false;
         }
         if (!Objects.equals(this.date, other.date)) {

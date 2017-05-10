@@ -8,6 +8,8 @@ package controller;
 import entity.Article;
 import entity.User;
 import java.io.IOException;
+import static java.lang.Integer.parseInt;
+import static java.lang.Long.parseLong;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -56,11 +58,32 @@ public class ArticleController extends HttpServlet {
                 if ("/addarticle".equals(userPath)) {
                     String mark = request.getParameter("mark");
                     String model = request.getParameter("model");
-                    String carbody = request.getParameter("carbody");                                    
+                    String carbody = request.getParameter("carbody");
                     String firstReg = request.getParameter("firstReg");
-                    String condition = request.getParameter("condition");
+                    String carCondition = request.getParameter("condition");
+                    String regNumber = request.getParameter("regNumber");
+
+                    String purchaseDate = request.getParameter("purchaseDate");
+                    String passport = request.getParameter("passport");
+                    String color = request.getParameter("color");
+                    Long run = parseLong(request.getParameter("run"));
+                    String driveUnit = request.getParameter("driveUnit");
+                    Long engineVolume = parseLong(request.getParameter("engineVolume"));
+                    Long enginePower = parseLong(request.getParameter("enginePower"));
+                    Long dryMass = parseLong(request.getParameter("dryMass"));
+                    Long fullMass = parseLong(request.getParameter("fullMass"));
+                    Long tank = parseLong(request.getParameter("tank"));
+                    String gear = request.getParameter("gear");
+                    String grip = request.getParameter("grip");
+                    Long fuelRate = parseLong(request.getParameter("fuelRate"));
+                    Integer seats = parseInt(request.getParameter("seats"));
+                    Integer doors = parseInt(request.getParameter("doors"));
+                    Long price = parseLong(request.getParameter("price"));
+                    String checkTime = request.getParameter("checkTime");
+                    String moreInfo = request.getParameter("moreInfo");
+
                     Date date = new Date();
-                    Article newArticle = new Article(mark, model, carbody, firstReg, regUser.getLogin(), date);
+                    Article newArticle = new Article(mark, model, carbody, firstReg, carCondition, regNumber, purchaseDate, passport, color, run, driveUnit, engineVolume, enginePower, dryMass, fullMass, tank, gear, grip, fuelRate, seats, doors, price, checkTime, moreInfo, regUser.getLogin(), date);
                     try {
                         articleFacade.create(newArticle);
                         request.setAttribute("info", "Статья успешно добавлена.");
@@ -83,9 +106,30 @@ public class ArticleController extends HttpServlet {
                     String articleId = request.getParameter("article_id");
                     String mark = request.getParameter("mark");
                     String model = request.getParameter("model");
-                    String carbody = request.getParameter("carbody"); 
+                    String carbody = request.getParameter("carbody");
                     String firstReg = request.getParameter("firstReg");
-                    String condition = request.getParameter("condition");
+                    String carCondition = request.getParameter("condition");
+                    String regNumber = request.getParameter("regNumber");
+                    
+                    String purchaseDate = request.getParameter("purchaseDate");
+                    String passport = request.getParameter("passport");
+                    String color = request.getParameter("color");
+                    Long run = parseLong(request.getParameter("run"));
+                    String driveUnit = request.getParameter("driveUnit");
+                    Long engineVolume = parseLong(request.getParameter("engineVolume"));
+                    Long enginePower = parseLong(request.getParameter("enginePower"));
+                    Long dryMass = parseLong(request.getParameter("dryMass"));
+                    Long fullMass = parseLong(request.getParameter("fullMass"));
+                    Long tank = parseLong(request.getParameter("tank"));
+                    String gear = request.getParameter("gear");
+                    String grip = request.getParameter("grip");
+                    Long fuelRate = parseLong(request.getParameter("fuelRate"));
+                    Integer seats = parseInt(request.getParameter("seats"));
+                    Integer doors = parseInt(request.getParameter("doors"));
+                    Long price = parseLong(request.getParameter("price"));
+                    String checkTime = request.getParameter("checkTime");
+                    String moreInfo = request.getParameter("moreInfo");
+                    
                     Date date = new Date();
                     Article updateArticle = articleFacade.find(new Long(articleId));
                     updateArticle.setMark(mark);
@@ -93,6 +137,9 @@ public class ArticleController extends HttpServlet {
                     updateArticle.setFirstReg(model);
                     updateArticle.setModel(carbody);
                     updateArticle.setFirstReg(firstReg);
+                    updateArticle.setCarCondition(carCondition);
+                    updateArticle.setCarCondition(regNumber);
+
                     updateArticle.setUserLogin(regUser.getLogin());
                     updateArticle.setDate(date);
                     try {

@@ -58,7 +58,7 @@
             </div>
             <div class="row">
                 <label class="span3">Дата первичной регистрации:</label>
-                <input type="date" class="span5 form-control" id="firstReg" >
+                <input type="date" class="span5 form-control" name="firstReg" >
             </div>
             <div class="row">
                 <label class="span3">Состояние:</label>
@@ -71,15 +71,15 @@
             </div>
             <div class="row">
                 <label class="span3">Регистрационный номер:</label>
-                <input type="text" class="span5 form-control" id="regNumber" >
+                <input type="text" class="span5 form-control" name="regNumber" >
             </div>
             <div class="row">
                 <label class="span3">Дата приобретения:</label>
-                <input type="date" class="span3 form-control" id="purchaseDate">
+                <input type="date" class="span3 form-control" name="purchaseDate">
             </div>
             <div class="row">
                 <label class="span3">Паспорт т/с:</label>
-                <select class="span3 form-control" id="passport" >
+                <select class="span3 form-control" name="passport" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                     <option value="Original">Оригинал</option>
                     <option value="Duplicate">Дубликат</option>
@@ -87,7 +87,7 @@
             </div>
             <div class="row">
                 <label class="span3">Цвет:</label>
-                <select class="span5 form-control" id="color" >
+                <select class="span5 form-control" name="color" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                     <option value="beige">бежевый</option>
                     <option value="white">белый</option>
@@ -107,11 +107,11 @@
             </div>
             <div class="row">
                 <label class="span3">Пробег (км):</label>
-                <input type="text" class="span5 form-control" id="run" >
+                <input type="text" class="span5 form-control" name="run" >
             </div>
             <div class="row">
                 <label class="span3">Привод:</label>
-                <select class="span5 form-control" id="driveUnit" >
+                <select class="span5 form-control" name="driveUnit" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                     <option value="Front">Передний</option>
                     <option value="Rear">Задний</option>
@@ -120,11 +120,11 @@
             </div>
             <div class="row">
                 <label class="span3">Объём двигателя (л):</label>
-                <input type="text" class="span5 form-control" id="engineVolume" >
+                <input type="text" class="span5 form-control" name="engineVolume" >
             </div>
             <div class="row">
                 <label class="span3">Тип двигателя:</label>
-                <select class="span5 form-control" id="engineType" >
+                <select class="span5 form-control" name="engineType" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                     <option value="enginetype1">Бензин</option>
                     <option value="enginetype2">Бензин инжектор</option>
@@ -141,23 +141,23 @@
             </div>
             <div class="row">
                 <label class="span3">Мощность двигателя (лс):</label>
-                <input type="text" class="span5 form-control" id="enginePower" >
+                <input type="text" class="span5 form-control" name="enginePower" >
             </div>
             <div class="row">
                 <label class="span3">Сухая масса (кг):</label>
-                <input type="text" class="span5 form-control" id="dryMass">
+                <input type="text" class="span5 form-control" name="dryMass">
             </div>
             <div class="row">
                 <label class="span3">Допустимая полная масса (кг):</label>
-                <input type="text" class="span5 form-control" id="fullMass">
+                <input type="text" class="span5 form-control" name="fullMass">
             </div>
             <div class="row">
                 <label class="span3">Бак (л):</label>
-                <input type="text" class="span5 form-control" id="tank" >
+                <input type="text" class="span5 form-control" name="tank" >
             </div>
             <div class="row">
                 <label class="span3">Коробка:</label>
-                <select class="span5 form-control" id="gear" >
+                <select class="span5 form-control" name="gear" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                     <option value="Mech">Механическая</option>
                     <option value="Auto">Автомат</option>
@@ -166,7 +166,7 @@
             </div>
             <div class="row">
                 <label class="span3">Руль:</label>
-                <select class="span5 form-control" id="grip" >
+                <select class="span5 form-control" name="grip" >
                     <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                     <option value="Left">Левый</option>
                     <option value="Right">Правый</option>
@@ -174,27 +174,27 @@
             </div>
             <div class="row">
                 <label class="span3">Расход топлива (л/100км):</label>
-                <input type="text" class="span5 form-control" id="fuelRate" >
+                <input type="text" class="span5 form-control" name="fuelRate" >
             </div>
             <div class="row">
                 <label class="span3">Количество мест:</label>
-                <input type="text" class="span5 form-control" id="seats" >
+                <input type="text" class="span5 form-control" name="seats" >
             </div>
             <div class="row">
                 <label class="span3">Количество дверей:</label>
-                <input type="text" class="span5 form-control" id="doors" >
+                <input type="text" class="span5 form-control" name="doors" >
             </div>
             <div class="row">
                 <label class="span3">Цена:</label>
-                <input type="text" class="span5 form-control" id="price" >
+                <input type="text" class="span5 form-control" name="price" >
             </div>
             <div class="row">
                 <label class="span3">Техосмотр действителен:</label>					
-                <input type="text" class="span5 form-control" id="checkTime">
+                <input type="text" class="span5 form-control" name="checkTime">
             </div>
             <div class="row">
                 <label class="span3">Другое:</label>
-                <textarea class="span7 form-control" id="moreInfo"></textarea>	
+                <textarea class="span7 form-control" name="moreInfo"></textarea>	
             </div>	
             <div class="row">
                 <label class="span3">Прикрепить файл:</label>
