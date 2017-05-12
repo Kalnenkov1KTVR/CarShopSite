@@ -18,10 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import security.AuthBean;
 import session.ArticleFacade;
 
-/**
- *
- * @author Melnikov
- */
 @WebServlet(name = "IndexController", loadOnStartup = 1, urlPatterns = {})
 public class IndexController extends HttpServlet {
 

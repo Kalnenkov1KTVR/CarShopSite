@@ -17,10 +17,6 @@ import javax.servlet.http.HttpSession;
 import security.AuthBean;
 import session.UserFacade;
 
-/**
- *
- * @author jvm
- */
 @WebServlet(name = "LoginController", urlPatterns = {"/login", "/loginForm"})
 public class LoginController extends HttpServlet {
 

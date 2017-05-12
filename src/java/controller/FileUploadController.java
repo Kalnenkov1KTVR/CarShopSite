@@ -21,10 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-/**
- *
- * @author jvm
- */
 @WebServlet(name = "FileUploadController", urlPatterns = {"/upload", "/uploadPage"})
 @MultipartConfig
 public class FileUploadController extends HttpServlet {

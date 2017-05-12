@@ -18,10 +18,6 @@ import session.GroupFacade;
 import session.UserFacade;
 import util.EncryptPass;
 
-/**
- *
- * @author jvm
- */
 @Stateless
 public class AuthBean {
 

@@ -5,7 +5,6 @@
  */
 package controller;
 
-import com.sun.corba.se.spi.presentation.rmi.StubAdapter;
 import entity.Article;
 import entity.User;
 import java.io.IOException;
@@ -137,7 +136,6 @@ public class ArticleController extends HttpServlet {
                         updateArticle.setFirstReg(firstReg);
                         updateArticle.setCarCondition(carCondition);
                         updateArticle.setCarCondition(regNumber);
-
                         updateArticle.setPurchaseDate(purchaseDate);
                         updateArticle.setPassport(passport);
                         updateArticle.setColor(color);

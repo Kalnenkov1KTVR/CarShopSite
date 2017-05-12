@@ -19,10 +19,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.Size;
 
-/**
- *
- * @author jvm
- */
 @Entity
 @NamedQueries(
         @NamedQuery(name = "User.findUserByLogin", query = "SELECT u FROM User u WHERE u.login=:login")

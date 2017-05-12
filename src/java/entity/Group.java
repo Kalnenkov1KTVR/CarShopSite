@@ -14,10 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- *
- * @author jvm
- */
 @Entity
 @Table(name = "GROUPS")
 public class Group implements Serializable {

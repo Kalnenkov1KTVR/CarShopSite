@@ -16,10 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author jvm
- */
 @Entity
 public class Comment implements Serializable {
 

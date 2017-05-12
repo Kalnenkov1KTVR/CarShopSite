@@ -25,8 +25,6 @@
                 </c:forEach>
             </div>
 
-
-
             <form role="form" role="form" method="POST" action="addarticle" onsubmit="return valid()">
                 <div class="row">
                     <label class="span3">Тип кузова:</label>
@@ -200,7 +198,6 @@
                 <button type="submit" class="btn-lg btn-danger">Отправить</button>
             </form>
         </div>
-
 
     </body>
 </html>

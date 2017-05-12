@@ -1,17 +1,18 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-<div id="main">
-    <p>Добро пожаловать.</p>
-    <p>Новости:</p>
+<div class="offset1" id="main">
+
+    <h2>Новости:</h2>
 
     <c:forEach var="article" items="${articles}">
-        <article>
-            <h2>${article.mark} ${article.model}</h2>
-            <div class="text-article"> ${fn:substring(article.model,0,300)} ... </div>
-            <div class="fotter-article">
-                <span class="read"><a href="user?article_id=${article.id}"> Читать...</a></span>
-                <span class="date-article">Дата статьи: ${article.date}</span>
+        <div class="row">
+            <div class="row"> 
+                <h3>${article.mark} ${article.model}</h3>
+                <div class="text-article"> ${fn:substring(article.model,0,300)}... </div>
+                <div class="span5">Дата добавления: ${article.date}</div>                             
+                <div class="span5"><a href="user?article_id=${article.id}"> Далее...</a></div>
             </div>
-        </article>
+        </div>
     </c:forEach>
+
 
 </div>

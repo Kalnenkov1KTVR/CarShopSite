@@ -9,10 +9,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
-/**
- *
- * @author jvm
- */
 public class EncryptPass {
 
     private String encriptPassword;

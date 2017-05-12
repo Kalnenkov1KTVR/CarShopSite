@@ -14,10 +14,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-/**
- *
- * @author jvm
- */
 @WebFilter(filterName = "CharsetEncodingFilter", urlPatterns = {"/*"})
 public class CharsetEncodingFilter implements Filter {
 

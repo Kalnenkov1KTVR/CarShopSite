@@ -63,7 +63,7 @@ public class AdminController extends HttpServlet {
                         request.setAttribute("info", "Группа \"" + newGroup + "\" добавлена!");
                     } catch (Exception e) {
                         System.out.println("Group not add");
-                        request.setAttribute("info", "Группу добавить неудалось!");
+                        request.setAttribute("info", "Группу добавить не удалось!");
                         request.getServletContext().getRequestDispatcher("/WEB-INF/admin/admin.jsp").forward(request, response);
                     }
                 } else if ("/addToGroup".equals(userPath)) {
@@ -76,7 +76,7 @@ public class AdminController extends HttpServlet {
                             selectUser.getGroups().add(group);
                             userFacade.edit(selectUser);
                         } catch (Exception e) {
-                            request.setAttribute("info", "Неудалось добавить пользователя в группу!");
+                            request.setAttribute("info", "Не удалось добавить пользователя в группу!");
                             request.getServletContext().getRequestDispatcher("/WEB-INF/admin/admin.jsp").forward(request, response);
 
                         }
@@ -85,7 +85,7 @@ public class AdminController extends HttpServlet {
                             selectUser.getGroups().remove(group);
                             userFacade.edit(selectUser);
                         } catch (Exception e) {
-                            request.setAttribute("info", "Неудалось удалить пользователя из группы!");
+                            request.setAttribute("info", "Не удалось удалить пользователя из группы!");
                             request.getServletContext().getRequestDispatcher("/WEB-INF/admin/admin.jsp").forward(request, response);
                         }
                     }
@@ -97,7 +97,7 @@ public class AdminController extends HttpServlet {
                     } catch (Exception e) {
                         request.setAttribute("users", userFacade.findAll());
                         request.setAttribute("groups", groupFacade.findAll());
-                        request.setAttribute("info", "Неудалось показать пользователей группы!");
+                        request.setAttribute("info", "Не удалось показать пользователей группы!");
                         request.getServletContext().getRequestDispatcher("/WEB-INF/admin/admin.jsp").forward(request, response);
                     }
                 } else if ("/deleteGroup".equals(userPath)) {
@@ -128,7 +128,7 @@ public class AdminController extends HttpServlet {
                                     LOGGER.log(Level.INFO, "Пользователь {0} удален из группы  {1}",
                                             new Object[]{user, group});
                                 } else {
-                                    LOGGER.log(Level.INFO, "Пользователя {0} неудалось удалить из группы  {1}",
+                                    LOGGER.log(Level.INFO, "Пользователя {0} не удалось удалить из группы  {1}",
                                             new Object[]{user, group});
                                 }
                                 if (user.getGroups().add(groupGUESTS)) {

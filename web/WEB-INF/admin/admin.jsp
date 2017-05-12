@@ -1,11 +1,10 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <h2>Привет, ${username}, Вы зашли на защищенный ресурс!</h2>
 <a href="logout">logout</a><br>
 <a href="newuser">Новый пользователь</a>
 <a href="newarticle">Новая статья</a>
-<p>Вы можете добавть/удалить группу (при добавлении придеживайтесь следующего соглашения:  <br>
+<p>Вы можете добавить/удалить группу (при добавлении придеживайтесь следующего соглашения:  <br>
     ИМЯ ГРУППЫ ПРОПИСНЫМИ БУКВАМИ ВО МНОЖЕСТВЕННОМ ЧИСЛЕ</p>
 <form action="newGroup" method="POST">
     <input type="text" name="new_group" placeholder="Имя группы">

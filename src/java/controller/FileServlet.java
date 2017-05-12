@@ -18,10 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author jvm
- */
 @WebServlet(name = "fileServlet", urlPatterns = {"/fileServlet/*"})
 public class FileServlet extends HttpServlet {
 

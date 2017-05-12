@@ -15,10 +15,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-/**
- *
- * @author jvm
- */
 @Stateless
 public class UserFacade extends AbstractFacade<User> {
 

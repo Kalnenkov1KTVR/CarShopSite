@@ -24,10 +24,6 @@ import session.ArticleFacade;
 import security.AuthBean;
 import session.CommentFacade;
 
-/**
- *
- * @author jvm
- */
 @WebServlet(name = "UserController", urlPatterns = {"/user", "/addNewUser", "/newuser", "/addComment", "/deleteComment"})
 public class UserController extends HttpServlet {
 
@@ -107,14 +103,14 @@ public class UserController extends HttpServlet {
                 } else {
                     String queryString = "?" + request.getQueryString();
                     request.setAttribute("path", "user" + queryString);
-                    request.setAttribute("info", "у Вас нет права зайти на этот ресурс");
+                    request.setAttribute("info", "У Вас нет права зайти на этот ресурс");
                     request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
                 }
 
             } else {
                 String queryString = "?" + request.getQueryString();
                 request.setAttribute("path", "user" + queryString);
-                request.setAttribute("info", "у Вас нет права зайти на этот ресурс");
+                request.setAttribute("info", "У Вас нет права зайти на этот ресурс");
                 request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
             }
         } else {
