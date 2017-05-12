@@ -107,14 +107,14 @@ public class UserController extends HttpServlet {
                 } else {
                     String queryString = "?" + request.getQueryString();
                     request.setAttribute("path", "user" + queryString);
-                    request.setAttribute("info", "У Вас, нет права зайти на этот ресурс");
+                    request.setAttribute("info", "у Вас нет права зайти на этот ресурс");
                     request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
                 }
 
             } else {
                 String queryString = "?" + request.getQueryString();
                 request.setAttribute("path", "user" + queryString);
-                request.setAttribute("info", "У Вас, нет права зайти на этот ресурс");
+                request.setAttribute("info", "у Вас нет права зайти на этот ресурс");
                 request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
             }
         } else {

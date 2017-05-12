@@ -26,9 +26,9 @@
                 <li><a href="#" class="button">Комментарии</a></li>
             </ul>
             <ul class="lang">               
-                <li><button class="btn-danger"><a href="admin">Вход (админ)</a></button></li>
-                <li><button class="btn-danger"><a href="user">Вход (юзер)</a></button><li>
-                <li><button class="btn-danger"><a href="newuser">Регистрация</a></button><li>
+                <li><button class="btn-sm btn-danger"><a href="admin">Вход (админ)</a></button></li>
+                <li><button class="btn-sm btn-danger"><a href="user">Вход (юзер)</a></button><li>
+                <li><button class="btn-sm btn-danger"><a href="newuser">Регистрация</a></button><li>
             </ul>
         </nav>
         <section>

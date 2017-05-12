@@ -5,9 +5,11 @@
  */
 package controller;
 
+import com.sun.corba.se.spi.presentation.rmi.StubAdapter;
 import entity.Article;
 import entity.User;
 import java.io.IOException;
+import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 import java.util.Date;
@@ -22,10 +24,6 @@ import javax.servlet.http.HttpSession;
 import session.ArticleFacade;
 import security.AuthBean;
 
-/**
- *
- * @author jvm
- */
 @WebServlet(name = "ArticleController", urlPatterns = {"/newarticle", "/addarticle", "/deletearticle", "/updateArticle", "/editArticle"})
 public class ArticleController extends HttpServlet {
 
@@ -49,120 +47,144 @@ public class ArticleController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         String userPath = request.getServletPath();
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            User regUser = (User) session.getAttribute("regUser");
-            String username = regUser.getName() + " " + regUser.getSurname();
-            request.setAttribute("username", username);
-            if (authBean.accessOn(regUser, "ADMINS")) {
-                if ("/addarticle".equals(userPath)) {
-                    String mark = request.getParameter("mark");
-                    String model = request.getParameter("model");
-                    String carbody = request.getParameter("carbody");
-                    String firstReg = request.getParameter("firstReg");
-                    String carCondition = request.getParameter("condition");
-                    String regNumber = request.getParameter("regNumber");
+        User regUser = authBean.getSessionUser(request);
+        if (regUser != null) {
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                String username = regUser.getName() + " " + regUser.getSurname();
+                request.setAttribute("username", username);
+                if ((authBean.accessOn(regUser, "ADMINS")) || (authBean.accessOn(regUser, "USERS"))) {
+                    if ("/addarticle".equals(userPath)) {
+                        String mark = request.getParameter("mark");
+                        String model = request.getParameter("model");
+                        String carbody = request.getParameter("carbody");
+                        String firstReg = request.getParameter("firstReg");
+                        String carCondition = request.getParameter("condition");
+                        String regNumber = request.getParameter("regNumber");
+                        String purchaseDate = request.getParameter("purchaseDate");
+                        String passport = request.getParameter("passport");
+                        String color = request.getParameter("color");
+                        Long run = parseLong(request.getParameter("run"));
+                        String driveUnit = request.getParameter("driveUnit");
+                        Float engineVolume = parseFloat(request.getParameter("engineVolume"));
+                        Long enginePower = parseLong(request.getParameter("enginePower"));
+                        Long dryMass = parseLong(request.getParameter("dryMass"));
+                        Long fullMass = parseLong(request.getParameter("fullMass"));
+                        Long tank = parseLong(request.getParameter("tank"));
+                        String gear = request.getParameter("gear");
+                        String grip = request.getParameter("grip");
+                        Float fuelRate = parseFloat(request.getParameter("fuelRate"));
+                        Integer seats = parseInt(request.getParameter("seats"));
+                        Integer doors = parseInt(request.getParameter("doors"));
+                        Float price = parseFloat(request.getParameter("price"));
+                        String checkTime = request.getParameter("checkTime");
+                        String moreInfo = request.getParameter("moreInfo");
 
-                    String purchaseDate = request.getParameter("purchaseDate");
-                    String passport = request.getParameter("passport");
-                    String color = request.getParameter("color");
-                    Long run = parseLong(request.getParameter("run"));
-                    String driveUnit = request.getParameter("driveUnit");
-                    Long engineVolume = parseLong(request.getParameter("engineVolume"));
-                    Long enginePower = parseLong(request.getParameter("enginePower"));
-                    Long dryMass = parseLong(request.getParameter("dryMass"));
-                    Long fullMass = parseLong(request.getParameter("fullMass"));
-                    Long tank = parseLong(request.getParameter("tank"));
-                    String gear = request.getParameter("gear");
-                    String grip = request.getParameter("grip");
-                    Long fuelRate = parseLong(request.getParameter("fuelRate"));
-                    Integer seats = parseInt(request.getParameter("seats"));
-                    Integer doors = parseInt(request.getParameter("doors"));
-                    Long price = parseLong(request.getParameter("price"));
-                    String checkTime = request.getParameter("checkTime");
-                    String moreInfo = request.getParameter("moreInfo");
+                        Date date = new Date();
+                        Article newArticle = new Article(mark, model, carbody, firstReg, carCondition, regNumber, purchaseDate, passport, color, run, driveUnit, engineVolume, enginePower, dryMass, fullMass, tank, gear, grip, fuelRate, seats, doors, price, checkTime, moreInfo, regUser.getLogin(), date);
+                        try {
+                            articleFacade.create(newArticle);
+                            request.setAttribute("info", "Статья успешно добавлена.");
+                        } catch (Exception e) {
+                            request.setAttribute("info", "Статья не добавлена. Вероятно повтор заголовка статьи");
+                        }
 
-                    Date date = new Date();
-                    Article newArticle = new Article(mark, model, carbody, firstReg, carCondition, regNumber, purchaseDate, passport, color, run, driveUnit, engineVolume, enginePower, dryMass, fullMass, tank, gear, grip, fuelRate, seats, doors, price, checkTime, moreInfo, regUser.getLogin(), date);
-                    try {
-                        articleFacade.create(newArticle);
-                        request.setAttribute("info", "Статья успешно добавлена.");
-                    } catch (Exception e) {
-                        request.setAttribute("info", "Статья не добавлена. Вероятно повтор заголовка статьи");
+                    } else if ("/deletearticle".equals(userPath)) {
+                        String id = request.getParameter("id");
+                        Article delArticle = articleFacade.find(new Long(id));
+                        articleFacade.remove(delArticle);
+                    } else if ("/editArticle".equals(userPath)) {
+                        String articleId = request.getParameter("article_id");
+                        Article article = articleFacade.find(new Long(articleId));
+                        request.setAttribute("article", article);
+                        request.getServletContext().getRequestDispatcher("/WEB-INF/user/editArticle.jsp").forward(request, response);
+                        return;
+
+                    } else if ("/updateArticle".equals(userPath)) {
+                        String articleId = request.getParameter("article_id");
+                        String mark = request.getParameter("mark");
+                        String model = request.getParameter("model");
+                        String carbody = request.getParameter("carbody");
+                        String firstReg = request.getParameter("firstReg");
+                        String carCondition = request.getParameter("condition");
+                        String regNumber = request.getParameter("regNumber");
+
+                        String purchaseDate = request.getParameter("purchaseDate");
+                        String passport = request.getParameter("passport");
+                        String color = request.getParameter("color");
+                        Long run = parseLong(request.getParameter("run"));
+                        String driveUnit = request.getParameter("driveUnit");
+                        Float engineVolume = parseFloat(request.getParameter("engineVolume"));
+                        Long enginePower = parseLong(request.getParameter("enginePower"));
+                        Long dryMass = parseLong(request.getParameter("dryMass"));
+                        Long fullMass = parseLong(request.getParameter("fullMass"));
+                        Long tank = parseLong(request.getParameter("tank"));
+                        String gear = request.getParameter("gear");
+                        String grip = request.getParameter("grip");
+                        Float fuelRate = parseFloat(request.getParameter("fuelRate"));
+                        Integer seats = parseInt(request.getParameter("seats"));
+                        Integer doors = parseInt(request.getParameter("doors"));
+                        Float price = parseFloat(request.getParameter("price"));
+                        String checkTime = request.getParameter("checkTime");
+                        String moreInfo = request.getParameter("moreInfo");
+
+                        Date date = new Date();
+                        Article updateArticle = articleFacade.find(new Long(articleId));
+                        updateArticle.setMark(mark);
+                        updateArticle.setModel(model);
+                        updateArticle.setFirstReg(model);
+                        updateArticle.setModel(carbody);
+                        updateArticle.setFirstReg(firstReg);
+                        updateArticle.setCarCondition(carCondition);
+                        updateArticle.setCarCondition(regNumber);
+
+                        updateArticle.setPurchaseDate(purchaseDate);
+                        updateArticle.setPassport(passport);
+                        updateArticle.setColor(color);
+                        updateArticle.setRun(run);
+                        updateArticle.setDriveUnit(driveUnit);
+                        updateArticle.setEngineVolume(engineVolume);
+                        updateArticle.setEnginePower(enginePower);
+                        updateArticle.setDryMass(dryMass);
+                        updateArticle.setFullMass(fullMass);
+                        updateArticle.setTank(tank);
+                        updateArticle.setGear(gear);
+                        updateArticle.setGrip(grip);
+                        updateArticle.setFuelRate(fuelRate);
+                        updateArticle.setSeats(seats);
+                        updateArticle.setDoors(doors);
+                        updateArticle.setPrice(price);
+                        updateArticle.setCheckTime(checkTime);
+                        updateArticle.setMoreInfo(moreInfo);
+
+                        updateArticle.setUserLogin(regUser.getLogin());
+                        updateArticle.setDate(date);
+                        try {
+                            articleFacade.edit(updateArticle);
+                            request.setAttribute("info", "Статья успешно обновлена.");
+                        } catch (Exception e) {
+                            request.setAttribute("info", "Статью обновить не удалось.");
+                        }
+
                     }
-
-                } else if ("/deletearticle".equals(userPath)) {
-                    String id = request.getParameter("id");
-                    Article delArticle = articleFacade.find(new Long(id));
-                    articleFacade.remove(delArticle);
-                } else if ("/editArticle".equals(userPath)) {
-                    String articleId = request.getParameter("article_id");
-                    Article article = articleFacade.find(new Long(articleId));
-                    request.setAttribute("article", article);
-                    request.getServletContext().getRequestDispatcher("/WEB-INF/user/editArticle.jsp").forward(request, response);
+                    List<Article> articles = articleFacade.findAll();
+                    request.setAttribute("articles", articles);
+                    request.getServletContext().getRequestDispatcher("/WEB-INF/admin/newArticle.jsp").forward(request, response);
                     return;
-
-                } else if ("/updateArticle".equals(userPath)) {
-                    String articleId = request.getParameter("article_id");
-                    String mark = request.getParameter("mark");
-                    String model = request.getParameter("model");
-                    String carbody = request.getParameter("carbody");
-                    String firstReg = request.getParameter("firstReg");
-                    String carCondition = request.getParameter("condition");
-                    String regNumber = request.getParameter("regNumber");
-                    
-                    String purchaseDate = request.getParameter("purchaseDate");
-                    String passport = request.getParameter("passport");
-                    String color = request.getParameter("color");
-                    Long run = parseLong(request.getParameter("run"));
-                    String driveUnit = request.getParameter("driveUnit");
-                    Long engineVolume = parseLong(request.getParameter("engineVolume"));
-                    Long enginePower = parseLong(request.getParameter("enginePower"));
-                    Long dryMass = parseLong(request.getParameter("dryMass"));
-                    Long fullMass = parseLong(request.getParameter("fullMass"));
-                    Long tank = parseLong(request.getParameter("tank"));
-                    String gear = request.getParameter("gear");
-                    String grip = request.getParameter("grip");
-                    Long fuelRate = parseLong(request.getParameter("fuelRate"));
-                    Integer seats = parseInt(request.getParameter("seats"));
-                    Integer doors = parseInt(request.getParameter("doors"));
-                    Long price = parseLong(request.getParameter("price"));
-                    String checkTime = request.getParameter("checkTime");
-                    String moreInfo = request.getParameter("moreInfo");
-                    
-                    Date date = new Date();
-                    Article updateArticle = articleFacade.find(new Long(articleId));
-                    updateArticle.setMark(mark);
-                    updateArticle.setModel(model);
-                    updateArticle.setFirstReg(model);
-                    updateArticle.setModel(carbody);
-                    updateArticle.setFirstReg(firstReg);
-                    updateArticle.setCarCondition(carCondition);
-                    updateArticle.setCarCondition(regNumber);
-
-                    updateArticle.setUserLogin(regUser.getLogin());
-                    updateArticle.setDate(date);
-                    try {
-                        articleFacade.edit(updateArticle);
-                        request.setAttribute("info", "Статья успешно обновлена.");
-                    } catch (Exception e) {
-                        request.setAttribute("info", "Статью обновить не удалось.");
-                    }
-
                 }
-                List<Article> articles = articleFacade.findAll();
-                request.setAttribute("articles", articles);
-                request.getServletContext().getRequestDispatcher("/WEB-INF/admin/newArticle.jsp").forward(request, response);
-                return;
-            }
-            request.setAttribute("path", "newarticle");
-            request.setAttribute("info", "У Вас, " + regUser.getLogin() + ", нет права зайти на этот ресурс");
-            request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
-        } else {
-            //session == null)
-            request.setAttribute("path", "newarticle");
-            request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
+                request.setAttribute("path", "newarticle");
+                request.setAttribute("info", regUser.getLogin() + "У Вас нет права зайти на этот ресурс");
+                request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
+            } else {
+                //session == null)
+                request.setAttribute("path", "newarticle");
+                request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
 
+            }
+        } else {
+            //regUser == null)
+            request.setAttribute("path", "admin");
+            request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
         }
     }
 

@@ -158,7 +158,7 @@ public class AdminController extends HttpServlet {
             } else {
                 //regUser != "ADMINS"
                 request.setAttribute("path", "admin");
-                request.setAttribute("info", "У Вас, " + regUser.getLogin() + ", нет права зайти на этот ресурс");
+                request.setAttribute("info", regUser.getLogin() + " У Вас нет права зайти на этот ресурс");
                 request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
             }
         } else {

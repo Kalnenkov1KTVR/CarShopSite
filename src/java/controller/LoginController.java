@@ -54,7 +54,7 @@ public class LoginController extends HttpServlet {
                 response.sendRedirect(path);
                 return;
             } else {
-                request.setAttribute("info", "Неправильный логин или пароль!<br><a href=\"newuser\">зарегистрироваться</a>");
+                request.setAttribute("info", "Нет пользователя с такими логином и/или паролем!<br>");
                 request.setAttribute("path", path);
                 request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
             }

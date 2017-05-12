@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -20,10 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author pupil
- */
 @Entity
 public class Article implements Serializable {
 
@@ -38,26 +28,24 @@ public class Article implements Serializable {
     private String firstReg;
     private String carCondition;
     private String regNumber;
-
     private String purchaseDate;
     private String passport;
     private String color;
     private Long run;
     private String driveUnit;
-    private Long engineVolume;
+    private Float engineVolume;
     private Long enginePower;
     private Long dryMass;
     private Long fullMass;
     private Long tank;
     private String gear;
     private String grip;
-    private Long fuelRate;
+    private Float fuelRate;
     private Integer seats;
     private Integer doors;
-    private Long price;
+    private Float price;
     private String checkTime;
     private String moreInfo;
-
     private String userLogin;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
@@ -67,7 +55,7 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    public Article(String mark, String model, String carbody, String firstReg, String carCondition, String regNumber, String purchaseDate, String passport, String color, Long run, String driveUnit, Long engineVolume, Long enginePower, Long dryMass, Long fullMass, Long tank, String gear, String grip, Long fuelRate, Integer seats, Integer doors, Long price, String checkTime, String moreInfo, String userLogin, Date date) {
+    public Article(String mark, String model, String carbody, String firstReg, String carCondition, String regNumber, String purchaseDate, String passport, String color, Long run, String driveUnit, Float engineVolume, Long enginePower, Long dryMass, Long fullMass, Long tank, String gear, String grip, Float fuelRate, Integer seats, Integer doors, Float price, String checkTime, String moreInfo, String userLogin, Date date) {
 
         this.mark = mark;
         this.model = model;
@@ -193,11 +181,11 @@ public class Article implements Serializable {
         this.driveUnit = driveUnit;
     }
 
-    public Long getEngineVolume() {
+    public Float getEngineVolume() {
         return engineVolume;
     }
 
-    public void setEngineVolume(Long engineVolume) {
+    public void setEngineVolume(Float engineVolume) {
         this.engineVolume = engineVolume;
     }
 
@@ -249,11 +237,11 @@ public class Article implements Serializable {
         this.grip = grip;
     }
 
-    public Long getFuelRate() {
+    public Float getFuelRate() {
         return fuelRate;
     }
 
-    public void setFuelRate(Long fuelRate) {
+    public void setFuelRate(Float fuelRate) {
         this.fuelRate = fuelRate;
     }
 
@@ -273,11 +261,11 @@ public class Article implements Serializable {
         this.doors = doors;
     }
 
-    public Long getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
