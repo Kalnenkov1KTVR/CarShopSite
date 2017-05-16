@@ -66,6 +66,7 @@ public class ArticleController extends HttpServlet {
                         Long run = parseLong(request.getParameter("run"));
                         String driveUnit = request.getParameter("driveUnit");
                         Float engineVolume = parseFloat(request.getParameter("engineVolume"));
+                        String engineType = request.getParameter("engineType");
                         Long enginePower = parseLong(request.getParameter("enginePower"));
                         Long dryMass = parseLong(request.getParameter("dryMass"));
                         Long fullMass = parseLong(request.getParameter("fullMass"));
@@ -80,7 +81,7 @@ public class ArticleController extends HttpServlet {
                         String moreInfo = request.getParameter("moreInfo");
 
                         Date date = new Date();
-                        Article newArticle = new Article(mark, model, carbody, firstReg, carCondition, regNumber, purchaseDate, passport, color, run, driveUnit, engineVolume, enginePower, dryMass, fullMass, tank, gear, grip, fuelRate, seats, doors, price, checkTime, moreInfo, regUser.getLogin(), date);
+                        Article newArticle = new Article(mark, model, carbody, firstReg, carCondition, regNumber, purchaseDate, passport, color, run, driveUnit, engineVolume, engineType, enginePower, dryMass, fullMass, tank, gear, grip, fuelRate, seats, doors, price, checkTime, moreInfo, regUser.getLogin(), date);
                         try {
                             articleFacade.create(newArticle);
                             request.setAttribute("info", "Статья успешно добавлена.");
@@ -114,6 +115,7 @@ public class ArticleController extends HttpServlet {
                         Long run = parseLong(request.getParameter("run"));
                         String driveUnit = request.getParameter("driveUnit");
                         Float engineVolume = parseFloat(request.getParameter("engineVolume"));
+                        String engineType = request.getParameter("engineType");
                         Long enginePower = parseLong(request.getParameter("enginePower"));
                         Long dryMass = parseLong(request.getParameter("dryMass"));
                         Long fullMass = parseLong(request.getParameter("fullMass"));
@@ -142,6 +144,7 @@ public class ArticleController extends HttpServlet {
                         updateArticle.setRun(run);
                         updateArticle.setDriveUnit(driveUnit);
                         updateArticle.setEngineVolume(engineVolume);
+                        updateArticle.setEngineType(engineType);
                         updateArticle.setEnginePower(enginePower);
                         updateArticle.setDryMass(dryMass);
                         updateArticle.setFullMass(fullMass);

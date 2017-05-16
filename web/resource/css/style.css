@@ -110,6 +110,10 @@ nav ul li a, nav ul li a:hover {
     clear: both;
 }
 
+.line {
+    display: inline-block;
+}
+
 section {
     max-width: 960px;
     padding: 0 20px;

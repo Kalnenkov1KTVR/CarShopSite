@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +35,7 @@ public class Article implements Serializable {
     private Long run;
     private String driveUnit;
     private Float engineVolume;
+    private String engineType;
     private Long enginePower;
     private Long dryMass;
     private Long fullMass;
@@ -55,7 +57,7 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    public Article(String mark, String model, String carbody, String firstReg, String carCondition, String regNumber, String purchaseDate, String passport, String color, Long run, String driveUnit, Float engineVolume, Long enginePower, Long dryMass, Long fullMass, Long tank, String gear, String grip, Float fuelRate, Integer seats, Integer doors, Float price, String checkTime, String moreInfo, String userLogin, Date date) {
+    public Article(String mark, String model, String carbody, String firstReg, String carCondition, String regNumber, String purchaseDate, String passport, String color, Long run, String driveUnit, Float engineVolume, String engineType, Long enginePower, Long dryMass, Long fullMass, Long tank, String gear, String grip, Float fuelRate, Integer seats, Integer doors, Float price, String checkTime, String moreInfo, String userLogin, Date date) {
 
         this.mark = mark;
         this.model = model;
@@ -69,6 +71,7 @@ public class Article implements Serializable {
         this.run = run;
         this.driveUnit = driveUnit;
         this.engineVolume = engineVolume;
+        this.engineType = engineType;
         this.enginePower = enginePower;
         this.dryMass = dryMass;
         this.fullMass = fullMass;
@@ -189,6 +192,14 @@ public class Article implements Serializable {
         this.engineVolume = engineVolume;
     }
 
+    public String getEngineType() {
+        return engineType;
+    }
+
+    public void setEngineType(String engineType) {
+        this.engineType = engineType;
+    }
+
     public Long getEnginePower() {
         return enginePower;
     }
@@ -293,8 +304,9 @@ public class Article implements Serializable {
         this.userLogin = userLogin;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.y h:m");
+        return dateFormat.format(date);
     }
 
     public void setDate(Date date) {
@@ -325,6 +337,7 @@ public class Article implements Serializable {
         hash = 13 * hash + Objects.hashCode(this.run);
         hash = 13 * hash + Objects.hashCode(this.driveUnit);
         hash = 13 * hash + Objects.hashCode(this.engineVolume);
+        hash = 13 * hash + Objects.hashCode(this.engineType);
         hash = 13 * hash + Objects.hashCode(this.enginePower);
         hash = 13 * hash + Objects.hashCode(this.dryMass);
         hash = 13 * hash + Objects.hashCode(this.fullMass);
@@ -406,6 +419,9 @@ public class Article implements Serializable {
             return false;
         }
         if (!Objects.equals(this.engineVolume, other.engineVolume)) {
+            return false;
+        }
+        if (!Objects.equals(this.engineType, other.engineType)) {
             return false;
         }
         if (!Objects.equals(this.enginePower, other.enginePower)) {

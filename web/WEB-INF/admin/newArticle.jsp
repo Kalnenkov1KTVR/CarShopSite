@@ -53,7 +53,7 @@
                 </div>
                 <div class="row">
                     <label class="span3">Дата первичной регистрации:</label>
-                    <input type="date" class="span5 form-control" name="firstReg" >
+                    <input type="date" class="span3 form-control" name="firstReg" >
                 </div>
                 <div class="row">
                     <label class="span3">Состояние:</label>
@@ -185,11 +185,11 @@
                 </div>
                 <div class="row">
                     <label class="span3">Техосмотр действителен:</label>					
-                    <input type="text" class="span5 form-control" name="checkTime">
+                    <input type="date" class="span3 form-control" name="checkTime">
                 </div>
                 <div class="row">
                     <label class="span3">Другое:</label>
-                    <textarea class="span8 form-control" name="moreInfo"></textarea>	
+                    <textarea class="span5 form-control" name="moreInfo" style="min-width: 83%; max-width: 83%;"></textarea>	
                 </div>	
                 <div class="row">
                     <label class="span3">Прикрепить файл:</label>
