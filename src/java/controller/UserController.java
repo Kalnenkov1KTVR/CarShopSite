@@ -108,18 +108,21 @@ public class UserController extends HttpServlet {
                 }
 
             } else {
-                String queryString = "?" + request.getQueryString();
-                request.setAttribute("path", "user" + queryString);
-                request.setAttribute("info", "У Вас нет права зайти на этот ресурс");
-                request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
+                String articleId = (String) request.getParameter("article_id");
+                if (articleId != null) {
+                    request.setAttribute("article", articleFacade.find(new Long(articleId)));
+                }
+                request.getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
+                return;
             }
         } else {
-            //regUser == null)
+            //session == null)
             String queryString = "?" + request.getQueryString();
             request.setAttribute("path", "user" + queryString);
             request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
 
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

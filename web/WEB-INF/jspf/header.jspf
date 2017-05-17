@@ -22,8 +22,8 @@
             <ul>
                 <li><a href="index" class="button">Главная</a><li>
                 <li><a href="newarticle" class="button">Подать объявление</a></li>
-                <li><a href="#" class="button">Обратная связь</a><li>
-                <li><a href="#" class="button">Комментарии</a></li>
+                <li><a href="contact" class="button">Обратная связь</a><li>
+                <li><a href="comments" class="button">Комментарии</a></li>
             </ul>
             <ul class="lang">               
                 <li><button class="btn-sm btn-danger"><a href="admin">Вход (админ)</a></button></li>

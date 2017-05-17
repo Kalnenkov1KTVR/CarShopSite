@@ -17,13 +17,7 @@
                 <p>${info}</p>
             </div>
 
-            <div class="row">
-                Опубликованные объявления
-                <br>
-                <c:forEach var="article" items="${articles}" varStatus="status">
-                    <p><a href="user?article_id=${article.id}">${status.index+1}. ${article.model}</a> <a href="deletearticle?id=${article.id}">Удалить</a></p>
-                </c:forEach>
-            </div>
+            
 
             <form role="form" role="form" method="POST" action="addarticle" onsubmit="return valid()">
                 <div class="row">

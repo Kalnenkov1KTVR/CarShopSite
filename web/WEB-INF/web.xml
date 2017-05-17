@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <servlet>
-        <servlet-name>CommentsController</servlet-name>
-        <servlet-class>controller.CommentsController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CommentsController</servlet-name>
-        <url-pattern>/CommentsController</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -20,6 +12,8 @@
         <jsp-property-group>
             <description>Настройка колонтитулов</description>
             <url-pattern>/index.jsp</url-pattern>
+            <url-pattern>/contactUs.jsp</url-pattern>
+            <url-pattern>/comments.jsp</url-pattern>
             <url-pattern>/WEB-INF/user/*</url-pattern>
             <url-pattern>/authForm/*</url-pattern>
             <url-pattern>/WEB-INF/admin/*</url-pattern>

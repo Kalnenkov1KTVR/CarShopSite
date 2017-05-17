@@ -6,7 +6,6 @@
 package controller;
 
 import entity.Article;
-import entity.Group;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,7 @@ import session.ArticleFacade;
 import session.GroupFacade;
 import session.UserFacade;
 
-@WebServlet(name = "IndexController", loadOnStartup = 1, urlPatterns = {"/index"})
+@WebServlet(name = "IndexController", loadOnStartup = 1, urlPatterns = {"/index", "/comments", "/contact"})
 public class IndexController extends HttpServlet {
 
     @EJB
@@ -33,9 +32,19 @@ public class IndexController extends HttpServlet {
     @EJB
     GroupFacade groupFacade;
 
-    
-    
-    
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        List<Article> articles = null;
+        try {
+            articles = articleFacade.findAll();
+        } catch (Exception e) {
+            articles = new ArrayList<>();
+        }
+
+        getServletContext().setAttribute("articles", articles);
+    }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -61,6 +70,21 @@ public class IndexController extends HttpServlet {
             getServletContext().setAttribute("articles", articles);
             request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             return;
+        }
+        
+        if ("/comments".equals(userPath)) {
+            List<Article> articles = new ArrayList<>();
+            try {
+                articles = articleFacade.findAll();
+            } catch (Exception e) {
+                articles = new ArrayList<>();
+            }
+            getServletContext().setAttribute("articles", articles);
+            request.getServletContext().getRequestDispatcher("/comments.jsp").forward(request, response);
+        }
+        
+        if ("/contact".equals(userPath)) {
+            request.getServletContext().getRequestDispatcher("/contactUs.jsp").forward(request, response);
         }
 
     }

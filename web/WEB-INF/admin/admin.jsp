@@ -49,3 +49,12 @@
     <input type="submit" name="remove" value="Удалить пользователя из группы">
 </form>
 
+
+<div class="row">
+    Опубликованные объявления
+    <br>
+    <c:forEach var="article" items="${articles}" varStatus="status">
+        <p><a href="user?article_id=${article.id}">${status.index+1}. ${article.model}</a> <a href="deletearticle?id=${article.id}">Удалить</a></p>
+    </c:forEach>
+</div>
+
