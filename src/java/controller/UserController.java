@@ -85,7 +85,7 @@ public class UserController extends HttpServlet {
                     String articleId = (String) request.getParameter("article_id");
                     if (articleId != null) {
                         request.setAttribute("article", articleFacade.find(new Long(articleId)));
-                        if (authBean.accessOn(regUser, "ADMINS")) {
+                        if ((authBean.accessOn(regUser, "ADMINS") || (authBean.accessOn(regUser, "USERS")))) {
                             if ("/deleteComment".equals(request.getServletPath())) {
                                 String commentId = request.getParameter("comment_id");
                                 Article article = articleFacade.find(new Long(articleId));
@@ -100,23 +100,24 @@ public class UserController extends HttpServlet {
 
                     request.getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
                     return;
-                } else {
+                } else { // regUser, != "USERS" || "ADMINS"
                     String queryString = "?" + request.getQueryString();
                     request.setAttribute("path", "user" + queryString);
                     request.setAttribute("info", "У Вас нет права зайти на этот ресурс");
                     request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
                 }
 
-            } else {
+            } else { // regUser = null
                 String articleId = (String) request.getParameter("article_id");
                 if (articleId != null) {
                     request.setAttribute("article", articleFacade.find(new Long(articleId)));
-                }
-                request.getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
+                } else {
+                    request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
+                }                
                 return;
             }
-        } else {
-            //session == null)
+        } else { //session == null)
             String queryString = "?" + request.getQueryString();
             request.setAttribute("path", "user" + queryString);
             request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
