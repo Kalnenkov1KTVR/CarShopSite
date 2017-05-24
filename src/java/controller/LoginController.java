@@ -54,6 +54,7 @@ public class LoginController extends HttpServlet {
                 request.setAttribute("path", path);
                 request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
             }
+            
         } else if ("/loginForm".equals(userPath)) {
 
             request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);

@@ -47,7 +47,7 @@ public class FileUploadController extends HttpServlet {
         } else {
             // Укажите в переменной path путь к каталогу, где будут храниться загруженные файлы (изображения)
             // Не забудьте дать права этой директории на запись чтение и исполнение (chmod 777)
-            final String path = "C:\\images";
+            final String path = "C:\\Users\\pupil.IVKHK\\Documents\\NetBeansProjects\\KTVR15\\CarShopSite\\web\\resource\\images";
             final Part filePart = request.getPart("file");
             final String fileName = (String) getFileName(filePart);
 

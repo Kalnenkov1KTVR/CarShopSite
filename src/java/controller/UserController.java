@@ -85,7 +85,7 @@ public class UserController extends HttpServlet {
                     String articleId = (String) request.getParameter("article_id");
                     if (articleId != null) {
                         request.setAttribute("article", articleFacade.find(new Long(articleId)));
-                        if ((authBean.accessOn(regUser, "ADMINS") || (authBean.accessOn(regUser, "USERS")))) {
+                        if ((authBean.accessOn(regUser, "ADMINS"))) {
                             if ("/deleteComment".equals(request.getServletPath())) {
                                 String commentId = request.getParameter("comment_id");
                                 Article article = articleFacade.find(new Long(articleId));
@@ -95,6 +95,9 @@ public class UserController extends HttpServlet {
                                 request.setAttribute("article", articleFacade.find(new Long(articleId)));
                             }
                             request.setAttribute("userGroup", "ADMINS");
+                        }
+                        if ((authBean.accessOn(regUser, "USERS"))) {
+                            request.setAttribute("userGroup", "USERS");
                         }
                     }
 
