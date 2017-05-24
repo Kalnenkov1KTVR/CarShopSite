@@ -25,10 +25,23 @@
                 <li><a href="contact" class="button">Обратная связь</a><li>
                 <li><a href="comments" class="button">Комментарии</a></li>
             </ul>
-            <ul class="lang">               
-                <li><button class="btn-sm btn-danger"><a href="admin">Вход (админ)</a></button></li>
-                <li><button class="btn-sm btn-danger"><a href="user">Вход (юзер)</a></button><li>
+            <ul class="lang">    
+
+                
+
+
+                    <c:choose>
+                        <c:when test="${regUser != null}">
+                        <li><button class="btn-sm btn-danger"><a href="logout">Выход</a></button><li>
+                        </c:when>
+                        <c:otherwise>
+                        <li><button class="btn-sm btn-danger"><a href="admin">Вход (админ)</a></button></li>
+                        <li><button class="btn-sm btn-danger"><a href="user">Вход (юзер)</a></button><li>
+                        </c:otherwise>
+                    </c:choose>            
+
                 <li><button class="btn-sm btn-danger"><a href="newuser">Регистрация</a></button><li>
+
             </ul>
         </nav>
         <section>

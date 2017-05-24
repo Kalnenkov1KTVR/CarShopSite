@@ -34,7 +34,8 @@ public class LogoutController extends HttpServlet {
             if (session != null) {
                 session.invalidate();
             }
-            response.sendRedirect("/CarShopSite/index.jsp");
+
+            request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }
 

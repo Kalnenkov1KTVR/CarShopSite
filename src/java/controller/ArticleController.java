@@ -184,9 +184,8 @@ public class ArticleController extends HttpServlet {
             }
         } else {
             //regUser == null)
-            request.setAttribute("path", "user");
+            request.setAttribute("path", "admin");
             request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
-            
         }
     }
 
