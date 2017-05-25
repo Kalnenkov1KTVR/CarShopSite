@@ -22,7 +22,6 @@ public class Article implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
     private String mark;
     private String model;
     private String carbody;
@@ -48,6 +47,9 @@ public class Article implements Serializable {
     private Float price;
     private String checkTime;
     private String moreInfo;
+    
+    private String image;
+    
     private String userLogin;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
@@ -57,7 +59,7 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    public Article(String mark, String model, String carbody, String firstReg, String carCondition, String regNumber, String purchaseDate, String passport, String color, Long run, String driveUnit, Float engineVolume, String engineType, Long enginePower, Long dryMass, Long fullMass, Long tank, String gear, String grip, Float fuelRate, Integer seats, Integer doors, Float price, String checkTime, String moreInfo, String userLogin, Date date) {
+    public Article(String mark, String model, String carbody, String firstReg, String carCondition, String regNumber, String purchaseDate, String passport, String color, Long run, String driveUnit, Float engineVolume, String engineType, Long enginePower, Long dryMass, Long fullMass, Long tank, String gear, String grip, Float fuelRate, Integer seats, Integer doors, Float price, String checkTime, String moreInfo, String image, String userLogin, Date date) {
 
         this.mark = mark;
         this.model = model;
@@ -84,10 +86,22 @@ public class Article implements Serializable {
         this.price = price;
         this.checkTime = checkTime;
         this.moreInfo = moreInfo;
+        this.image = image;
+        
         this.userLogin = userLogin;
         this.date = date;
     }
 
+    
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    
     public Long getId() {
         return id;
     }
@@ -305,7 +319,7 @@ public class Article implements Serializable {
     }
 
     public String getDate() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.y h:m");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.y h:mm");
         return dateFormat.format(date);
     }
 

@@ -47,7 +47,7 @@ public class FileUploadController extends HttpServlet {
         } else {
             // Укажите в переменной path путь к каталогу, где будут храниться загруженные файлы (изображения)
             // Не забудьте дать права этой директории на запись чтение и исполнение (chmod 777)
-            final String path = "C:\\Users\\pupil.IVKHK\\Documents\\NetBeansProjects\\KTVR15\\CarShopSite\\web\\resource\\images";
+            final String path = "C:\\images";
             final Part filePart = request.getPart("file");
             final String fileName = (String) getFileName(filePart);
 
@@ -81,11 +81,11 @@ public class FileUploadController extends HttpServlet {
 
             }
             if (!"".equals(fileName)) {
+                request.setAttribute("fileName", fileName);
                 request.setAttribute("linkImg", path + File.separator + fileName);
-                request.setAttribute("info", "Файл загружен.<br>Ссылка для копирования: " + path + File.separator + fileName);
+                request.setAttribute("info", "Файл загружен. Ссылка для копирования: " + path + File.separator + fileName);
             } else {
                 request.setAttribute("info", "Не выбран файл для загрузки!");
-
             }
             request.getRequestDispatcher("/newarticle").forward(request, response);
         }

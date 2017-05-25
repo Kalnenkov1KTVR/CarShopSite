@@ -4,25 +4,25 @@
 
     <c:if test="${regUser != null}">
         <h2>Привет, ${username}!</h2>
-        <a href="logout">Logout</a><br>
-        <br>
 
-        <div class="row">
-            Ваши объявления:
-            <br>
-            <c:forEach var="article" items="${articles}" varStatus="status">
-                <c:if test="${regUser.login eq article.userLogin}">
-                    <p>
-                        <a href="user?article_id=${article.id}">${status.index+1}. ${article.model}</a>
-                        <a href="deletearticle?id=${article.id}">Удалить</a>
-                    </p>
+        <c:if test="${article eq null}">
 
-                </c:if>
-            </c:forEach>
-        </div>
+            <div class="row">
+                Ваши объявления:
+                <br>
+                <c:forEach var="article" items="${articles}" varStatus="status">
+                    <c:if test="${regUser.login eq article.userLogin}">
+                        <p>
+                            <a href="user?article_id=${article.id}">${status.index+1}. ${article.model}</a>
+                            <a href="deletearticle?id=${article.id}">Удалить</a>
+                        </p>
+
+                    </c:if>
+                </c:forEach>
+            </div>
+        </c:if>
 
     </c:if>
-
 
 
     <c:if test="${article != null}">
@@ -31,11 +31,10 @@
 
                 <h3>${article.mark} ${article.model}</h3>
                 <div class="row span4">
-                    <div class="thumb row" ><img src="" width="275" height="200"></div>
-                    <div class="thumb row" ><img src="" width="275" height="200"></div>
-                    <div class="thumb row" ><img src="" width="275" height="200"></div>
+                    <div class="thumb row" ><a href=""><img src="fileServlet/${article.image}" width="275" height="200"></a></div>
+
                 </div>
-                <div class="row" style="margin-right: 30px">
+                <div class="row span4" style="margin-right: 30px">
 
 
                     <label>Тип кузова: </label>

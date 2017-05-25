@@ -12,17 +12,20 @@
             <div class="row">
                 <h2>Привет, ${username}!</h2>
                 Добавить новое объявление<br>
+
                 <a href="uploadPage" name="upload_file">Загрузить файл</a>
 
                 <p>${info}</p>
+
             </div>
 
-            
+
 
             <form role="form" role="form" method="POST" action="addarticle" onsubmit="return valid()">
+                <input type="hidden" name="fileName" value="${fileName}">
                 <div class="row">
                     <label class="span3">Тип кузова:</label>
-                    <select class="span5 form-control" name="carbody" >
+                    <select class="span5 form-control" name="carbody" required>
                         <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                         <option value="Sedan">Седан</option>
                         <option value="Hatchback">Хэтчбэк</option>
@@ -39,19 +42,19 @@
                 </div>
                 <div class="row">
                     <label class="span3">Марка:</label>
-                    <input type="text" class="span5 form-control" name="mark" >
+                    <input type="text" class="span5 form-control" name="mark" required>
                 </div>
                 <div class="row">
                     <label class="span3">Модель:</label>
-                    <input type="text" class="span5 form-control" name="model" >
+                    <input type="text" class="span5 form-control" name="model" required>
                 </div>
                 <div class="row">
                     <label class="span3">Дата первичной регистрации:</label>
-                    <input type="date" class="span3 form-control" name="firstReg" >
+                    <input type="date" class="span3 form-control" name="firstReg" required>
                 </div>
                 <div class="row">
                     <label class="span3">Состояние:</label>
-                    <select class="span5 form-control" name="condition" >
+                    <select class="span5 form-control" name="condition" required>
                         <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                         <option value="Fine">Не требует ремонта</option>
                         <option value="Broken">Битый / не на ходу</option>
@@ -60,15 +63,15 @@
                 </div>
                 <div class="row">
                     <label class="span3">Регистрационный номер:</label>
-                    <input type="text" class="span5 form-control" name="regNumber" >
+                    <input type="text" class="span5 form-control" name="regNumber" required>
                 </div>
                 <div class="row">
                     <label class="span3">Дата приобретения:</label>
-                    <input type="date" class="span3 form-control" name="purchaseDate">
+                    <input type="date" class="span3 form-control" name="purchaseDate" required>
                 </div>
                 <div class="row">
                     <label class="span3">Паспорт т/с:</label>
-                    <select class="span3 form-control" name="passport" >
+                    <select class="span3 form-control" name="passport" required>
                         <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                         <option value="Original">Оригинал</option>
                         <option value="Duplicate">Дубликат</option>
@@ -76,7 +79,7 @@
                 </div>
                 <div class="row">
                     <label class="span3">Цвет:</label>
-                    <select class="span5 form-control" name="color" >
+                    <select class="span5 form-control" name="color" required>
                         <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                         <option value="beige">бежевый</option>
                         <option value="white">белый</option>
@@ -96,11 +99,11 @@
                 </div>
                 <div class="row">
                     <label class="span3">Пробег (км):</label>
-                    <input type="text" class="span5 form-control" name="run" >
+                    <input type="text" class="span5 form-control" name="run" required>
                 </div>
                 <div class="row">
                     <label class="span3">Привод:</label>
-                    <select class="span5 form-control" name="driveUnit" >
+                    <select class="span5 form-control" name="driveUnit" required>
                         <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                         <option value="Front">Передний</option>
                         <option value="Rear">Задний</option>
@@ -109,7 +112,7 @@
                 </div>
                 <div class="row">
                     <label class="span3">Объём двигателя (л):</label>
-                    <input type="text" class="span5 form-control" name="engineVolume" >
+                    <input type="text" class="span5 form-control" name="engineVolume" required>
                 </div>
                 <div class="row">
                     <label class="span3">Тип двигателя:</label>
@@ -130,23 +133,23 @@
                 </div>
                 <div class="row">
                     <label class="span3">Мощность двигателя (лс):</label>
-                    <input type="text" class="span5 form-control" name="enginePower" >
+                    <input type="text" class="span5 form-control" name="enginePower" required>
                 </div>
                 <div class="row">
                     <label class="span3">Сухая масса (кг):</label>
-                    <input type="text" class="span5 form-control" name="dryMass">
+                    <input type="text" class="span5 form-control" name="dryMass" required>
                 </div>
                 <div class="row">
                     <label class="span3">Допустимая полная масса (кг):</label>
-                    <input type="text" class="span5 form-control" name="fullMass">
+                    <input type="text" class="span5 form-control" name="fullMass" required>
                 </div>
                 <div class="row">
                     <label class="span3">Бак (л):</label>
-                    <input type="text" class="span5 form-control" name="tank" >
+                    <input type="text" class="span5 form-control" name="tank" required>
                 </div>
                 <div class="row">
                     <label class="span3">Коробка:</label>
-                    <select class="span5 form-control" name="gear" >
+                    <select class="span5 form-control" name="gear" required>
                         <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                         <option value="Mech">Механическая</option>
                         <option value="Auto">Автомат</option>
@@ -155,7 +158,7 @@
                 </div>
                 <div class="row">
                     <label class="span3">Руль:</label>
-                    <select class="span5 form-control" name="grip" >
+                    <select class="span5 form-control" name="grip" required>
                         <option selected="selected" disabled="disabled" value="">Выбрать...</option>
                         <option value="Left">Левый</option>
                         <option value="Right">Правый</option>
@@ -163,32 +166,28 @@
                 </div>
                 <div class="row">
                     <label class="span3">Расход топлива (л/100км):</label>
-                    <input type="text" class="span5 form-control" name="fuelRate" >
+                    <input type="text" class="span5 form-control" name="fuelRate" required>
                 </div>
                 <div class="row">
                     <label class="span3">Количество мест:</label>
-                    <input type="text" class="span5 form-control" name="seats" >
+                    <input type="text" class="span5 form-control" name="seats" required>
                 </div>
                 <div class="row">
                     <label class="span3">Количество дверей:</label>
-                    <input type="text" class="span5 form-control" name="doors" >
+                    <input type="text" class="span5 form-control" name="doors" required>
                 </div>
                 <div class="row">
                     <label class="span3">Цена:</label>
-                    <input type="text" class="span5 form-control" name="price" >
+                    <input type="text" class="span5 form-control" name="price" required>
                 </div>
                 <div class="row">
                     <label class="span3">Техосмотр действителен:</label>					
-                    <input type="date" class="span3 form-control" name="checkTime">
+                    <input type="date" class="span3 form-control" name="checkTime" required>
                 </div>
                 <div class="row">
                     <label class="span3">Другое:</label>
                     <textarea class="span5 form-control" name="moreInfo" style="min-width: 83%; max-width: 83%;"></textarea>	
                 </div>	
-                <div class="row">
-                    <label class="span3">Прикрепить файл:</label>
-                    <input type="file" class="form-control span5" multiple id="addfile">
-                </div>
                 <button type="submit" class="btn-lg btn-danger">Отправить</button>
             </form>
         </div>

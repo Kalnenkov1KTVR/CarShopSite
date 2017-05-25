@@ -79,14 +79,15 @@ public class ArticleController extends HttpServlet {
                         Float price = parseFloat(request.getParameter("price"));
                         String checkTime = request.getParameter("checkTime");
                         String moreInfo = request.getParameter("moreInfo");
-
+                        String image = request.getParameter("fileName");
+                        
                         Date date = new Date();
-                        Article newArticle = new Article(mark, model, carbody, firstReg, carCondition, regNumber, purchaseDate, passport, color, run, driveUnit, engineVolume, engineType, enginePower, dryMass, fullMass, tank, gear, grip, fuelRate, seats, doors, price, checkTime, moreInfo, regUser.getLogin(), date);
+                        Article newArticle = new Article(mark, model, carbody, firstReg, carCondition, regNumber, purchaseDate, passport, color, run, driveUnit, engineVolume, engineType, enginePower, dryMass, fullMass, tank, gear, grip, fuelRate, seats, doors, price, checkTime, moreInfo, image, regUser.getLogin(), date);
                         try {
                             articleFacade.create(newArticle);
-                            request.setAttribute("info", "Статья успешно добавлена.");
+                            request.setAttribute("info", "Объявление успешно добавлено.");
                         } catch (Exception e) {
-                            request.setAttribute("info", "Статья не добавлена. Вероятно повтор заголовка статьи");
+                            request.setAttribute("info", "Ошибка. Объявление не добавлено.");
                         }
 
                     } else if ("/deletearticle".equals(userPath)) {
@@ -128,6 +129,7 @@ public class ArticleController extends HttpServlet {
                         Float price = parseFloat(request.getParameter("price"));
                         String checkTime = request.getParameter("checkTime");
                         String moreInfo = request.getParameter("moreInfo");
+                        String image = request.getParameter("fileName");
 
                         Date date = new Date();
                         Article updateArticle = articleFacade.find(new Long(articleId));
@@ -157,14 +159,15 @@ public class ArticleController extends HttpServlet {
                         updateArticle.setPrice(price);
                         updateArticle.setCheckTime(checkTime);
                         updateArticle.setMoreInfo(moreInfo);
+                        updateArticle.setImage(image);
 
                         updateArticle.setUserLogin(regUser.getLogin());
                         updateArticle.setDate(date);
                         try {
                             articleFacade.edit(updateArticle);
-                            request.setAttribute("info", "Статья успешно обновлена.");
+                            request.setAttribute("info", "Объявление успешно обновлено.");
                         } catch (Exception e) {
-                            request.setAttribute("info", "Статью обновить не удалось.");
+                            request.setAttribute("info", "Объявление обновить не удалось.");
                         }
 
                     }
