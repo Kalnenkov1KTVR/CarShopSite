@@ -118,17 +118,17 @@
                     <label class="span3">Тип двигателя:</label>
                     <select class="span5 form-control" name="engineType" >
                         <option selected="selected" disabled="disabled" value="">Выбрать...</option>
-                        <option value="enginetype1">Бензин</option>
-                        <option value="enginetype2">Бензин инжектор</option>
-                        <option value="enginetype3">Бензин карбюратор</option>
-                        <option value="enginetype4">Бензин ротор</option>
-                        <option value="enginetype5">Бензин турбонаддув</option>
-                        <option value="enginetype6">Бензин инжектор с нагнетателем</option>
-                        <option value="enginetype7">Дизель</option>
-                        <option value="enginetype8">Дизель турбонаддув</option>
-                        <option value="enginetype9">Газ</option>
-                        <option value="enginetype10">Электромотор</option>
-                        <option value="enginetype11">Гибрид</option>
+                        <option value="Gas">Бензин</option>
+                        <option value="Gas Injector">Бензин инжектор</option>
+                        <option value="Gas Cardurator">Бензин карбюратор</option>
+                        <option value="Gas Rotor">Бензин ротор</option>
+                        <option value="Gas Turbo">Бензин турбонаддув</option>
+                        <option value="Gas Injector + Supercharger">Бензин инжектор с нагнетателем</option>
+                        <option value="Diesel">Дизель</option>
+                        <option value="Diesel Turbo">Дизель турбонаддув</option>
+                        <option value="Propane">Газ</option>
+                        <option value="Electric">Электромотор</option>
+                        <option value="Hybrid">Гибрид</option>
                     </select>
                 </div>
                 <div class="row">
@@ -151,9 +151,9 @@
                     <label class="span3">Коробка:</label>
                     <select class="span5 form-control" name="gear" required>
                         <option selected="selected" disabled="disabled" value="">Выбрать...</option>
-                        <option value="Mech">Механическая</option>
-                        <option value="Auto">Автомат</option>
-                        <option value="Hald-auto">Полуавтомат</option>
+                        <option value="Mechanical">Механическая</option>
+                        <option value="Automatic">Автомат</option>
+                        <option value="Half-auto">Полуавтомат</option>
                     </select>
                 </div>
                 <div class="row">

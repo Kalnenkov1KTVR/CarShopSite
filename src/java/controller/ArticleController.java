@@ -93,7 +93,12 @@ public class ArticleController extends HttpServlet {
                     } else if ("/deletearticle".equals(userPath)) {
                         String id = request.getParameter("id");
                         Article delArticle = articleFacade.find(new Long(id));
-                        articleFacade.remove(delArticle);
+                        if (delArticle != null) {
+                            articleFacade.remove(delArticle);
+                        }
+                        getServletContext().setAttribute("articles", articleFacade.findAll());
+                        request.getServletContext().getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
+                        
                     } else if ("/editArticle".equals(userPath)) {
                         String articleId = request.getParameter("article_id");
                         Article article = articleFacade.find(new Long(articleId));

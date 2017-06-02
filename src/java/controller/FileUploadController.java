@@ -83,7 +83,7 @@ public class FileUploadController extends HttpServlet {
             if (!"".equals(fileName)) {
                 request.setAttribute("fileName", fileName);
                 request.setAttribute("linkImg", path + File.separator + fileName);
-                request.setAttribute("info", "Файл загружен. Ссылка для копирования: " + path + File.separator + fileName);
+                request.setAttribute("info", "Файл загружен. Имя файла: " + fileName);
             } else {
                 request.setAttribute("info", "Не выбран файл для загрузки!");
             }

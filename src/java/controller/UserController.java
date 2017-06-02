@@ -97,12 +97,24 @@ public class UserController extends HttpServlet {
                             request.setAttribute("userGroup", "ADMINS");
                         }
                         if ((authBean.accessOn(regUser, "USERS"))) {
+                            if ("/deleteComment".equals(request.getServletPath())) {
+                                String commentId = request.getParameter("comment_id");
+                                Article article = articleFacade.find(new Long(articleId));
+                                Comment delComment = commentFacade.find(new Long(commentId));
+                                article.getComments().remove(delComment);
+                                articleFacade.edit(article);
+                                request.setAttribute("article", articleFacade.find(new Long(articleId)));
+                            }
+
                             request.setAttribute("userGroup", "USERS");
                         }
                     }
-
+                    if ("/user".equals(request.getServletPath())) {
+                        getServletContext().setAttribute("articles", articleFacade.findAll());
+                    }
                     request.getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
                     return;
+                    
                 } else { // regUser, != "USERS" || "ADMINS"
                     String queryString = "?" + request.getQueryString();
                     request.setAttribute("path", "user" + queryString);
@@ -117,7 +129,7 @@ public class UserController extends HttpServlet {
                     request.getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
                 } else {
                     request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
-                }                
+                }
                 return;
             }
         } else { //session == null)
