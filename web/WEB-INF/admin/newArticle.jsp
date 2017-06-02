@@ -6,6 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="${pageContext.servletContext.contextPath}/css/newArticle.css" rel="stylesheet" type="text/css">
         <title>Добавить новую статью</title>
+        <script src="${pageContext.request.servletContext.contextPath}/resource/js/newArticle.js" defer></script>
     </head>
     <body>
         <div class="offset1">
@@ -99,7 +100,7 @@
                 </div>
                 <div class="row">
                     <label class="span3">Пробег (км):</label>
-                    <input type="text" class="span5 form-control" name="run" required>
+                    <input type="text" class="span5 form-control" name="run" id="run" required>
                 </div>
                 <div class="row">
                     <label class="span3">Привод:</label>
@@ -112,7 +113,7 @@
                 </div>
                 <div class="row">
                     <label class="span3">Объём двигателя (л):</label>
-                    <input type="text" class="span5 form-control" name="engineVolume" required>
+                    <input type="number" class="span5 form-control" name="engineVolume" id="engineVolume" required>
                 </div>
                 <div class="row">
                     <label class="span3">Тип двигателя:</label>
@@ -133,19 +134,19 @@
                 </div>
                 <div class="row">
                     <label class="span3">Мощность двигателя (лс):</label>
-                    <input type="text" class="span5 form-control" name="enginePower" required>
+                    <input type="text" class="span5 form-control" name="enginePower" id="enginePower" required>
                 </div>
                 <div class="row">
                     <label class="span3">Сухая масса (кг):</label>
-                    <input type="text" class="span5 form-control" name="dryMass" required>
+                    <input type="text" class="span5 form-control" name="dryMass" id="dryMass" required>
                 </div>
                 <div class="row">
                     <label class="span3">Допустимая полная масса (кг):</label>
-                    <input type="text" class="span5 form-control" name="fullMass" required>
+                    <input type="text" class="span5 form-control" name="fullMass" id="fullMass" required>
                 </div>
                 <div class="row">
                     <label class="span3">Бак (л):</label>
-                    <input type="text" class="span5 form-control" name="tank" required>
+                    <input type="text" class="span5 form-control" name="tank" id="tank" required>
                 </div>
                 <div class="row">
                     <label class="span3">Коробка:</label>
@@ -166,19 +167,19 @@
                 </div>
                 <div class="row">
                     <label class="span3">Расход топлива (л/100км):</label>
-                    <input type="text" class="span5 form-control" name="fuelRate" required>
+                    <input type="text" class="span5 form-control" name="fuelRate" id="fuelRate" required>
                 </div>
                 <div class="row">
                     <label class="span3">Количество мест:</label>
-                    <input type="text" class="span5 form-control" name="seats" required>
+                    <input type="text" class="span5 form-control" name="seats" id="seats" required>
                 </div>
                 <div class="row">
                     <label class="span3">Количество дверей:</label>
-                    <input type="text" class="span5 form-control" name="doors" required>
+                    <input type="text" class="span5 form-control" name="doors" id="doors" required>
                 </div>
                 <div class="row">
                     <label class="span3">Цена:</label>
-                    <input type="text" class="span5 form-control" name="price" required>
+                    <input type="text" class="span5 form-control" name="price" id="price" required>
                 </div>
                 <div class="row">
                     <label class="span3">Техосмотр действителен:</label>					

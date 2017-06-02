@@ -8,15 +8,15 @@
 
 <div class="offset1" id="main">
 
-    <h4>Написать письмецо:</h4>
+    <h4>Написать:</h4>
     <form role="form" role="form" method="POST" action="" onsubmit="return valid()">
         <div class="form-group span5">
             <label for="username">Имя:</label>
-            <input type="text" class="form-control" id="username" required>
+            <input type="text" class="form-control" id="username" name="username" required>
         </div>
         <div class="form-group span5">
             <label for="contact">Email:</label>
-            <input type="email" class="form-control" id="contact" required>
+            <input type="email" class="form-control" id="contact" name="contact" required>
         </div>
         <div class="form-group span5">
             <label for="file">Прикрепить файл:</label>
@@ -24,7 +24,7 @@
         </div>
         <div class="form-group span10">
             <label for="message">Сообщение:</label>
-            <textarea class="form-control" id="message" rows="5" style="max-width: 90%" required></textarea>
+            <textarea class="form-control" id="message" rows="5" style="max-width: 90%" required name="body" ></textarea>
         </div>
         <div class="form-group span8">
         <button type="submit" class="btn btn-default">Отправить</button>
