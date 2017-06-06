@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,6 +7,8 @@
         <title>Регистрация</title>
     </head>
     <body>
+        <h4 class="row offset1"> ${reginfo} </h4>
+
         <div class="offset1">
             <form action="addNewUser" method="POST">            
 
@@ -38,7 +40,7 @@
                 <div class="row">
                     <input type="submit" class="btn btn-danger" name="submit" value="Зарегистрироваться">
                 </div>
-                
+
             </form>
         </div>
     </body>

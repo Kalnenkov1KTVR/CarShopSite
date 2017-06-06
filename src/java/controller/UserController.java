@@ -56,12 +56,22 @@ public class UserController extends HttpServlet {
             String email = request.getParameter("email");
             String login = request.getParameter("login");
             String password = request.getParameter("password");
+
             try {
-                authBean.addNewUser(login, password, name, surname, phone, email);
+
+                User user = authBean.addNewUser(login, password, name, surname, phone, email);
+                if (user != null) {
+                    request.setAttribute("reginfo", "Пользователь " + login + " успешно зарегистрирован.");
+                } else {
+                    request.setAttribute("reginfo", "Регистрация не удалась. Пользователь " + login + " уже существует");
+                    request.getServletContext().getRequestDispatcher("/authForm/registration.jsp").forward(request, response);
+                    return;
+                }
+
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            response.sendRedirect("index.jsp");
+            request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             return;
         }
         HttpSession session = request.getSession(false);
@@ -114,7 +124,7 @@ public class UserController extends HttpServlet {
                     }
                     request.getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
                     return;
-                    
+
                 } else { // regUser, != "USERS" || "ADMINS"
                     String queryString = "?" + request.getQueryString();
                     request.setAttribute("path", "user" + queryString);

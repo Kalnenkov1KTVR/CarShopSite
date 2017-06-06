@@ -100,7 +100,7 @@ public class ArticleController extends HttpServlet {
                         request.getServletContext().getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
                         
                     } else if ("/editArticle".equals(userPath)) {
-                        String articleId = request.getParameter("article_id");
+                        String articleId = request.getParameter("id");
                         Article article = articleFacade.find(new Long(articleId));
                         request.setAttribute("article", article);
                         request.getServletContext().getRequestDispatcher("/WEB-INF/user/editArticle.jsp").forward(request, response);

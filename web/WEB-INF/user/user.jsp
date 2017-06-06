@@ -1,4 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+
 
 <div class="row offset1">
 
@@ -15,6 +16,7 @@
                         <p>
                             <a href="user?article_id=${article.id}">${status.index+1}. ${article.model}</a>
                             <a href="deletearticle?id=${article.id}">Удалить</a>
+                            <a href="editArticle?id=${article.id}">Редактировать</a>
                         </p>
 
                     </c:if>
@@ -106,10 +108,10 @@
                     <label>Другое: </label>
                     ${article.moreInfo}	
                     <br>
-                    <label>Автор: </label>
-                    ${article.userLogin}	
+                    <label>Владелец: </label>
+                    <a href="user?userId=">${article.userLogin}</a>	
                     <br>
-                    <label>Дата публикации: </label>
+                    <label>Дата добавления: </label>
                     ${article.date}	
 
                 </div>

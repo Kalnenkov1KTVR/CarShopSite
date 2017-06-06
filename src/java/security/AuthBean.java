@@ -108,12 +108,17 @@ public class AuthBean {
                 newUser = userFacade.findRegUserByName(newUser.getLogin());
                 newUser.getGroups().add(groupGuests);
                 userFacade.edit(newUser);
+                return userFacade.findRegUserByName(login);
             }
-            return userFacade.findRegUserByName(login);
+            else if (userFacade.findRegUserByName(login) != null) {
+                return null;
+            }
+            
         } catch (Exception e) {
             System.out.println("Not create newUser: " + newUser.toString());
             return null;
         }
+        return null;
 
     }
 
