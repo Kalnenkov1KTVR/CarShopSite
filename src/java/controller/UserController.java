@@ -56,10 +56,10 @@ public class UserController extends HttpServlet {
             String email = request.getParameter("email");
             String login = request.getParameter("login");
             String password = request.getParameter("password");
-
+            String address = request.getParameter("address");
             try {
 
-                User user = authBean.addNewUser(login, password, name, surname, phone, email);
+                User user = authBean.addNewUser(login, password, name, surname, phone, email, address);
                 if (user != null) {
                     request.setAttribute("reginfo", "Пользователь " + login + " успешно зарегистрирован.");
                 } else {
@@ -132,7 +132,15 @@ public class UserController extends HttpServlet {
                     request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
                 }
 
-            } else { // regUser = null
+            } //            else if ("/user".equals(request.getServletPath())) {
+            //                String userId = (String) request.getParameter("userId");
+            //                if (userId != null) {
+            //                    request.setAttribute("user", articleFacade.find(new Long(userId)));
+            //                    request.getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
+            //                } 
+            //                return;
+            //            } 
+            else { // regUser = null
                 String articleId = (String) request.getParameter("article_id");
                 if (articleId != null) {
                     request.setAttribute("article", articleFacade.find(new Long(articleId)));
@@ -141,6 +149,7 @@ public class UserController extends HttpServlet {
                     request.getServletContext().getRequestDispatcher("/authForm/login.jsp").forward(request, response);
                 }
                 return;
+
             }
         } else { //session == null)
             String queryString = "?" + request.getQueryString();

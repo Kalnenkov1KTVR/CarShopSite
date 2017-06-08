@@ -15,7 +15,7 @@
                 <h2>Введите все данные</h2>
                 <div class="row">
                     <label class="span3">Имя: </label>
-                    <input type="text" class="span5 form-control" name="name" placeholder="Имя">
+                    <input type="text" class="span5 form-control" name="name" placeholder="Имя" required>
                 </div>
                 <div class="row">
                     <label class="span3">Фамилия: </label> 
@@ -23,15 +23,19 @@
                 </div>
                 <div class="row">
                     <label class="span3">Логин: </label>
-                    <input type="text" class="span5 form-control" name="login" placeholder="Логин">
+                    <input type="text" class="span5 form-control" name="login" placeholder="Логин" required>
                 </div>
                 <div class="row">
                     <label class="span3">Пароль: </label> 
-                    <input type="password" class="span5 form-control" name="password" placeholder="Пароль">
+                    <input type="password" class="span5 form-control" name="password" placeholder="Пароль" required>
                 </div>
                 <div class="row">
                     <label class="span3">Телефон: </label> 
-                    <input type="text" class="span5 form-control" name="phone" placeholder="Телефон">
+                    <input type="text" class="span5 form-control" name="phone" placeholder="Телефон" required>
+                </div>
+                <div class="row">
+                    <label class="span3">Адрес: </label> 
+                    <input type="text" class="span5 form-control" name="address" placeholder="Адрес" required>
                 </div>
                 <div class="row">
                     <label class="span3">Электронная почта: </label> 

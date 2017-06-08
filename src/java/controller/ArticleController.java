@@ -82,7 +82,9 @@ public class ArticleController extends HttpServlet {
                         String image = request.getParameter("fileName");
                         
                         Date date = new Date();
-                        Article newArticle = new Article(mark, model, carbody, firstReg, carCondition, regNumber, purchaseDate, passport, color, run, driveUnit, engineVolume, engineType, enginePower, dryMass, fullMass, tank, gear, grip, fuelRate, seats, doors, price, checkTime, moreInfo, image, regUser.getLogin(), date);
+                        Article newArticle = new Article(mark, model, carbody, firstReg, carCondition, regNumber, purchaseDate, passport, 
+                                color, run, driveUnit, engineVolume, engineType, enginePower, dryMass, fullMass, tank, gear, grip, fuelRate, seats, 
+                                doors, price, checkTime, moreInfo, image, regUser.getName(), regUser.getSurname(), regUser.getAddress(), regUser.getPhone(), regUser.getEmail(), date);
                         try {
                             articleFacade.create(newArticle);
                             request.setAttribute("info", "Объявление успешно добавлено.");
@@ -166,7 +168,7 @@ public class ArticleController extends HttpServlet {
                         updateArticle.setMoreInfo(moreInfo);
                         updateArticle.setImage(image);
 
-                        updateArticle.setUserLogin(regUser.getLogin());
+                        updateArticle.setUserName(regUser.getLogin());
                         updateArticle.setDate(date);
                         try {
                             articleFacade.edit(updateArticle);

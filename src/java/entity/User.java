@@ -50,8 +50,8 @@ public class User extends Person {
         this.password = password;
     }
 
-    public User(String login, String password, String salts, List<Group> groups, String name, String surname, String phone, String email) {
-        super(name, surname, phone, email);
+    public User(String login, String password, String salts, List<Group> groups, String name, String surname, String phone, String email, String address) {
+        super(name, surname, phone, email, address);
         this.login = login;
         this.password = password;
         this.salts = salts;

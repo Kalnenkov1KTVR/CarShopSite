@@ -27,15 +27,25 @@ public class Person implements Serializable {
     private String surname;
     private String phone;
     private String email;
+    private String address;
 
     public Person() {
     }
 
-    public Person(String name, String surname, String phone, String email) {
+    public Person(String name, String surname, String phone, String email, String address) {
         this.name = name;
         this.surname = surname;
         this.phone = phone;
         this.email = email;
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Long getId() {
@@ -108,6 +118,9 @@ public class Person implements Serializable {
             return false;
         }
         if (!Objects.equals(this.phone, other.phone)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
             return false;
         }
         if (!Objects.equals(this.email, other.email)) {

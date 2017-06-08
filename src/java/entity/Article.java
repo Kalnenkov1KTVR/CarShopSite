@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,10 +46,15 @@ public class Article implements Serializable {
     private Float price;
     private String checkTime;
     private String moreInfo;
-    
+
     private String image;
-    
-    private String userLogin;
+
+    private String userName;
+    private String userLastname;
+    private String userAddress;
+    private String userPhone;
+    private String userEmail;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
@@ -59,7 +63,10 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    public Article(String mark, String model, String carbody, String firstReg, String carCondition, String regNumber, String purchaseDate, String passport, String color, Long run, String driveUnit, Float engineVolume, String engineType, Long enginePower, Long dryMass, Long fullMass, Long tank, String gear, String grip, Float fuelRate, Integer seats, Integer doors, Float price, String checkTime, String moreInfo, String image, String userLogin, Date date) {
+    public Article(String mark, String model, String carbody, String firstReg, String carCondition, String regNumber,
+            String purchaseDate, String passport, String color, Long run, String driveUnit, Float engineVolume, String engineType,
+            Long enginePower, Long dryMass, Long fullMass, Long tank, String gear, String grip, Float fuelRate, Integer seats, Integer doors,
+            Float price, String checkTime, String moreInfo, String image, String userName, String userLastname, String userAddress, String userPhone, String userEmail, Date date) {
 
         this.mark = mark;
         this.model = model;
@@ -87,12 +94,48 @@ public class Article implements Serializable {
         this.checkTime = checkTime;
         this.moreInfo = moreInfo;
         this.image = image;
-        
-        this.userLogin = userLogin;
+
+        this.userName = userName;
+        this.userLastname = userLastname;
+        this.userAddress = userAddress;
+        this.userPhone = userPhone;
+        this.userEmail = userEmail;
+
         this.date = date;
     }
 
-    
+    public String getUserLastname() {
+        return userLastname;
+    }
+
+    public void setUserLastname(String userLastname) {
+        this.userLastname = userLastname;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
     public String getImage() {
         return image;
     }
@@ -101,7 +144,6 @@ public class Article implements Serializable {
         this.image = image;
     }
 
-    
     public Long getId() {
         return id;
     }
@@ -310,12 +352,12 @@ public class Article implements Serializable {
         this.moreInfo = moreInfo;
     }
 
-    public String getUserLogin() {
-        return userLogin;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserLogin(String userLogin) {
-        this.userLogin = userLogin;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getDate() {
@@ -364,7 +406,7 @@ public class Article implements Serializable {
         hash = 13 * hash + Objects.hashCode(this.price);
         hash = 13 * hash + Objects.hashCode(this.checkTime);
         hash = 13 * hash + Objects.hashCode(this.moreInfo);
-        hash = 13 * hash + Objects.hashCode(this.userLogin);
+        hash = 13 * hash + Objects.hashCode(this.userName);
         hash = 13 * hash + Objects.hashCode(this.date);
         return hash;
     }
@@ -423,7 +465,7 @@ public class Article implements Serializable {
         if (!Objects.equals(this.moreInfo, other.moreInfo)) {
             return false;
         }
-        if (!Objects.equals(this.userLogin, other.userLogin)) {
+        if (!Objects.equals(this.userName, other.userName)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
@@ -470,7 +512,7 @@ public class Article implements Serializable {
 
     @Override
     public String toString() {
-        return "Article{" + "id=" + id + ", mark=" + mark + ", model=" + model + ", carbody=" + carbody + ", userLogin=" + userLogin + ", date=" + date + '}';
+        return "Article{" + "id=" + id + ", mark=" + mark + ", model=" + model + ", carbody=" + carbody + ", userLogin=" + userName + ", date=" + date + '}';
     }
 
 }

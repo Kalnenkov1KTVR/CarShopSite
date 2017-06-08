@@ -32,6 +32,8 @@
             <div class="row" style="margin-left: 30px">
 
                 <h3>${article.mark} ${article.model}</h3>
+                <label>Дата добавления: </label>
+                ${article.date}
                 <div class="row span4">
                     <div class="thumb row" ><a href=""><img src="fileServlet/${article.image}" width="275" height="200"></a></div>
 
@@ -39,6 +41,7 @@
                 <div class="row span4" style="margin-right: 30px">
 
 
+                    <br>
                     <label>Тип кузова: </label>
                     ${article.carbody}
                     <br>
@@ -99,8 +102,7 @@
                     <label>Количество дверей: </label>
                     ${article.doors}
                     <br>
-                    <label>Цена: </label>
-                    ${article.price}
+                    <h3>Цена: ${article.price}</h3>
                     <br>
                     <label>Техосмотр действителен: </label>
                     ${article.checkTime}	
@@ -108,11 +110,17 @@
                     <label>Другое: </label>
                     ${article.moreInfo}	
                     <br>
-                    <label>Владелец: </label>
-                    <a href="user?userId=">${article.userLogin}</a>	
+                    <div class="row"></div>
+                    <h4>Данные владельца:</h4>
+                    <label>${article.userName}	${article.userLastname}</label>
                     <br>
-                    <label>Дата добавления: </label>
-                    ${article.date}	
+                    <label>Адрес: </label>
+                    ${article.userAddress}
+                    <br>
+                    <label>Телефон: </label>
+                    ${article.userPhone}
+                    <br>
+
 
                 </div>
 

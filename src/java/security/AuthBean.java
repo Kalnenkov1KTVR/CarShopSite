@@ -67,7 +67,7 @@ public class AuthBean {
 
     }
 
-    public User addNewUser(String login, String password, String name, String surname, String phone, String email) throws NoSuchAlgorithmException {
+    public User addNewUser(String login, String password, String name, String surname, String phone, String email, String address) throws NoSuchAlgorithmException {
 
         EncryptPass encriptPass = new EncryptPass();
         String salts = encriptPass.getSalts();
@@ -101,7 +101,7 @@ public class AuthBean {
 
         List<Group> emptyGroups = new ArrayList<>();
         // groups.add(groupGuests);
-        User newUser = new User(login, password, salts, emptyGroups, name, surname, phone, email);
+        User newUser = new User(login, password, salts, emptyGroups, name, surname, phone, email, address);
         try {
             if (userFacade.findRegUserByName(login) == null) {
                 userFacade.create(newUser);
