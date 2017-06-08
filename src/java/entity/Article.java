@@ -49,6 +49,7 @@ public class Article implements Serializable {
 
     private String image;
 
+    private Long userId;
     private String userName;
     private String userLastname;
     private String userAddress;
@@ -66,7 +67,8 @@ public class Article implements Serializable {
     public Article(String mark, String model, String carbody, String firstReg, String carCondition, String regNumber,
             String purchaseDate, String passport, String color, Long run, String driveUnit, Float engineVolume, String engineType,
             Long enginePower, Long dryMass, Long fullMass, Long tank, String gear, String grip, Float fuelRate, Integer seats, Integer doors,
-            Float price, String checkTime, String moreInfo, String image, String userName, String userLastname, String userAddress, String userPhone, String userEmail, Date date) {
+            Float price, String checkTime, String moreInfo, String image, 
+            Long userId, String userName, String userLastname, String userAddress, String userPhone, String userEmail, Date date) {
 
         this.mark = mark;
         this.model = model;
@@ -95,6 +97,7 @@ public class Article implements Serializable {
         this.moreInfo = moreInfo;
         this.image = image;
 
+        this.userId = userId;
         this.userName = userName;
         this.userLastname = userLastname;
         this.userAddress = userAddress;
@@ -102,6 +105,14 @@ public class Article implements Serializable {
         this.userEmail = userEmail;
 
         this.date = date;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getUserLastname() {
@@ -406,7 +417,7 @@ public class Article implements Serializable {
         hash = 13 * hash + Objects.hashCode(this.price);
         hash = 13 * hash + Objects.hashCode(this.checkTime);
         hash = 13 * hash + Objects.hashCode(this.moreInfo);
-        hash = 13 * hash + Objects.hashCode(this.userName);
+        hash = 13 * hash + Objects.hashCode(this.userId);
         hash = 13 * hash + Objects.hashCode(this.date);
         return hash;
     }
@@ -465,7 +476,7 @@ public class Article implements Serializable {
         if (!Objects.equals(this.moreInfo, other.moreInfo)) {
             return false;
         }
-        if (!Objects.equals(this.userName, other.userName)) {
+        if (!Objects.equals(this.userId, other.userId)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {

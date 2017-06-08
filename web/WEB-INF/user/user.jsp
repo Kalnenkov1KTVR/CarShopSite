@@ -12,7 +12,7 @@
                 Ваши объявления:
                 <br>
                 <c:forEach var="article" items="${articles}" varStatus="status">
-                    <c:if test="${regUser.login eq article.userLogin}">
+                    <c:if test="${regUser.id eq article.userId}">
                         <p>
                             <a href="user?article_id=${article.id}">${status.index+1}. ${article.model}</a>
                             <a href="deletearticle?id=${article.id}">Удалить</a>
