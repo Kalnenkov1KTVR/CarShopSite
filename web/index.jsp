@@ -14,7 +14,7 @@
             <h3>${article.mark} ${article.model}</h3>
             <tr>
                 <td class="row">
-                    <div class="thumb span4"><img src="fileServlet/${article.images[0]}" width="275" height="200"></div>
+                    <div class="thumb span4"><img src="fileServlet/${article.images[0]}" width="275"></div>
 
                 </td>
                 <td class="row">

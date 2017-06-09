@@ -38,7 +38,7 @@
 
                     <c:forEach var="image" items="${article.images}" varStatus="status">
                         <div class="thumb row" ><a href="" type="button" data-toggle="modal" data-target="#enlarge-${status.index}">
-                                <img src="fileServlet/${image}" width="275" height="200"></a></div>
+                                <img src="fileServlet/${image}" width="275"></a></div>
 
                         <!-- big picture modal -->
                         <div class="modal fade" id="enlarge-${status.index}" role="dialog">

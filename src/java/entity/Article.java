@@ -14,7 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -377,7 +376,7 @@ public class Article implements Serializable {
     }
 
     public String getDate() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.y h:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.y hh:mm");
         return dateFormat.format(date);
     }
 
