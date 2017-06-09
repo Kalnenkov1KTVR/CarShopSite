@@ -1,9 +1,12 @@
+
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="offset1" id="main">
-    
+
     <h4 class="row offset1"> ${reginfo} </h4>
-    
+
     <h2>Новости:</h2>
+
+
 
     <c:forEach var="article" items="${articles}">
 
@@ -11,7 +14,7 @@
             <h3>${article.mark} ${article.model}</h3>
             <tr>
                 <td class="row">
-                    <div class="thumb span4"><img src="fileServlet/${article.image}" width="275" height="200"></div>
+                    <div class="thumb span4"><img src="fileServlet/${article.images[0]}" width="275" height="200"></div>
 
                 </td>
                 <td class="row">

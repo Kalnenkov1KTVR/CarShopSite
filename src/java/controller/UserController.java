@@ -123,7 +123,6 @@ public class UserController extends HttpServlet {
                         getServletContext().setAttribute("articles", articleFacade.findAll());
                     }
                     request.getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
-                    return;
 
                 } else { // regUser, != "USERS" || "ADMINS"
                     String queryString = "?" + request.getQueryString();

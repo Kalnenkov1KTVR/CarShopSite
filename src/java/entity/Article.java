@@ -1,3 +1,7 @@
+/**
+ * Класс объекта "Объявление" - содержит все данные об автомобиле (вносятся пользователем) + данные о владельце (берутся из активной сессии пользователя)
+ */
+
 package entity;
 
 import java.io.Serializable;
@@ -10,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,8 +51,8 @@ public class Article implements Serializable {
     private Float price;
     private String checkTime;
     private String moreInfo;
-
-    private String image;
+    
+    private List<String> images;
 
     private Long userId;
     private String userName;
@@ -67,7 +72,7 @@ public class Article implements Serializable {
     public Article(String mark, String model, String carbody, String firstReg, String carCondition, String regNumber,
             String purchaseDate, String passport, String color, Long run, String driveUnit, Float engineVolume, String engineType,
             Long enginePower, Long dryMass, Long fullMass, Long tank, String gear, String grip, Float fuelRate, Integer seats, Integer doors,
-            Float price, String checkTime, String moreInfo, String image, 
+            Float price, String checkTime, String moreInfo, List<String> images, 
             Long userId, String userName, String userLastname, String userAddress, String userPhone, String userEmail, Date date) {
 
         this.mark = mark;
@@ -95,7 +100,7 @@ public class Article implements Serializable {
         this.price = price;
         this.checkTime = checkTime;
         this.moreInfo = moreInfo;
-        this.image = image;
+        this.images = images;
 
         this.userId = userId;
         this.userName = userName;
@@ -147,12 +152,12 @@ public class Article implements Serializable {
         this.userEmail = userEmail;
     }
 
-    public String getImage() {
-        return image;
+    public List<String> getImages() {
+        return images;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 
     public Long getId() {

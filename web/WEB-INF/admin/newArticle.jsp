@@ -23,7 +23,7 @@
 
 
             <form role="form" role="form" method="POST" action="addarticle" onsubmit="return valid()">
-                <input type="hidden" name="fileName" value="${fileName}">
+                <input type="hidden" name="fileNames" value="${fileNames}">
                 <div class="row">
                     <label class="span3">Тип кузова:</label>
                     <select class="span5 form-control" name="carbody" required>

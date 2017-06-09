@@ -19,16 +19,20 @@
             </div>
 
             <form role="form" role="form" method="POST" action="addarticle" onsubmit="return valid()">
-                
+
                 <div class="row">
                     <label class="span3">Фото:</label>
-                    <input type="text" class="span5 form-control" name="fileName" required value="${article.image}">
+                    <c:forEach var="image" items="${article.images}" varStatus="status">
+                        ${image} <a href=""></a>
+                    </c:forEach>
                 </div>
-                
-                
+
+
                 <div class="row">
                     <label class="span3">Тип кузова:</label>
                     <select class="span5 form-control" name="carbody" required>
+
+
 
 
                         <option selected="true" value="${article.carbody}">${article.carbody}</option>
@@ -63,9 +67,9 @@
                 <div class="row">
                     <label class="span3">Состояние:</label>
                     <select class="span5 form-control" name="condition" required>
-                        
+
                         <option selected="true" value="${article.carCondition}">${article.carCondition}</option>
-                        
+
                         <option disabled="disabled" value="">Выбрать...</option>
                         <option value="Не требует ремонта">Не требует ремонта</option>
                         <option value="Битый / не на ходу">Битый / не на ходу</option>
@@ -83,9 +87,9 @@
                 <div class="row">
                     <label class="span3">Паспорт т/с:</label>
                     <select class="span3 form-control" name="passport" required>
-                        
+
                         <option selected="true" value="${article.passport}">${article.passport}</option>
-                        
+
                         <option disabled="disabled" value="">Выбрать...</option>
                         <option value="Оригинал">Оригинал</option>
                         <option value="Дубликат">Дубликат</option>
@@ -94,9 +98,9 @@
                 <div class="row">
                     <label class="span3">Цвет:</label>
                     <select class="span5 form-control" name="color" required>
-                        
+
                         <option selected="true" value="${article.color}">${article.color}</option>
-                        
+
                         <option disabled="disabled" value="">Выбрать...</option>
                         <option value="бежевый">бежевый</option>
                         <option value="белый">белый</option>
@@ -121,9 +125,9 @@
                 <div class="row">
                     <label class="span3">Привод:</label>
                     <select class="span5 form-control" name="driveUnit" required>
-                        
+
                         <option selected="true" value="${article.driveUnit}">${article.driveUnit}</option>
-                        
+
                         <option disabled="disabled" value="">Выбрать...</option>
                         <option value="Передний">Передний</option>
                         <option value="Задний">Задний</option>
@@ -137,9 +141,9 @@
                 <div class="row">
                     <label class="span3">Тип двигателя:</label>
                     <select class="span5 form-control" name="engineType" >
-                        
+
                         <option selected="true" value="${article.engineType}">${article.engineType}</option>
-                        
+
                         <option disabled="disabled" value="">Выбрать...</option>
                         <option value="Бензин">Бензин</option>
                         <option value="Бензин инжектор">Бензин инжектор</option>
@@ -173,9 +177,9 @@
                 <div class="row">
                     <label class="span3">Коробка:</label>
                     <select class="span5 form-control" name="gear" required>
-                        
+
                         <option selected="true" value="${article.gear}">${article.gear}</option>
-                        
+
                         <option disabled="disabled" value="">Выбрать...</option>
                         <option value="Механическая">Механическая</option>
                         <option value="Автомат">Автомат</option>
@@ -185,9 +189,9 @@
                 <div class="row">
                     <label class="span3">Руль:</label>
                     <select class="span5 form-control" name="grip" required>
-                        
+
                         <option selected="true" value="${article.grip}">${article.grip}</option>
-                        
+
                         <option disabled="disabled" value="">Выбрать...</option>
                         <option value="Левый">Левый</option>
                         <option value="Правый">Правый</option>

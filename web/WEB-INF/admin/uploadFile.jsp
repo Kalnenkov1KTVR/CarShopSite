@@ -16,7 +16,7 @@
         <h2>Загрузить файл!</h2>
         <form method="POST" action="upload" enctype="multipart/form-data" >
             Выберите файл в вашей файловой системе:
-            <input type="file" name="file" id="file" /> <br/>
+            <input type="file" name="file" id="file" multiple="true"/> <br/>
 
             </br>
             <input type="submit" value="Загрузить" name="upload" id="upload" />

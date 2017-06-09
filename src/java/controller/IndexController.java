@@ -8,7 +8,9 @@ package controller;
 import entity.Article;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import static javafx.scene.input.KeyCode.T;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +40,8 @@ public class IndexController extends HttpServlet {
         List<Article> articles = null;
         try {
             articles = articleFacade.findAll();
+            //Collections.reverse(articles);
+
         } catch (Exception e) {
             articles = new ArrayList<>();
         }
@@ -64,6 +68,7 @@ public class IndexController extends HttpServlet {
             List<Article> articles = new ArrayList<>();
             try {
                 articles = articleFacade.findAll();
+
             } catch (Exception e) {
                 articles = new ArrayList<>();
             }
@@ -71,18 +76,20 @@ public class IndexController extends HttpServlet {
             request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             return;
         }
-        
+
         if ("/comments".equals(userPath)) {
             List<Article> articles = new ArrayList<>();
             try {
+
                 articles = articleFacade.findAll();
+
             } catch (Exception e) {
                 articles = new ArrayList<>();
             }
             getServletContext().setAttribute("articles", articles);
             request.getServletContext().getRequestDispatcher("/comments.jsp").forward(request, response);
         }
-        
+
         if ("/contact".equals(userPath)) {
             request.getServletContext().getRequestDispatcher("/contactUs.jsp").forward(request, response);
         }

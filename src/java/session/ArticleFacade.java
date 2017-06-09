@@ -24,5 +24,7 @@ public class ArticleFacade extends AbstractFacade<Article> {
     public ArticleFacade() {
         super(Article.class);
     }
-
+    
+    
+    
 }

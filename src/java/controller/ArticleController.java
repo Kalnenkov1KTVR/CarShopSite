@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import entity.Article;
@@ -79,12 +74,15 @@ public class ArticleController extends HttpServlet {
                         Float price = parseFloat(request.getParameter("price"));
                         String checkTime = request.getParameter("checkTime");
                         String moreInfo = request.getParameter("moreInfo");
-                        String image = request.getParameter("fileName");
-                        
+
+                        HttpSession sessionBox = request.getSession(false);
+                        List<String> images = (List<String>) sessionBox.getAttribute("imageList");
+
                         Date date = new Date();
-                        Article newArticle = new Article(mark, model, carbody, firstReg, carCondition, regNumber, purchaseDate, passport, 
-                                color, run, driveUnit, engineVolume, engineType, enginePower, dryMass, fullMass, tank, gear, grip, fuelRate, seats, 
-                                doors, price, checkTime, moreInfo, image, regUser.getId(), regUser.getName(), regUser.getSurname(), regUser.getAddress(), regUser.getPhone(), regUser.getEmail(), date);
+                        Article newArticle = new Article(mark, model, carbody, firstReg, carCondition, regNumber, purchaseDate, passport,
+                                color, run, driveUnit, engineVolume, engineType, enginePower, dryMass, fullMass, tank, gear, grip, fuelRate, seats,
+                                doors, price, checkTime, moreInfo, images,
+                                regUser.getId(), regUser.getName(), regUser.getSurname(), regUser.getAddress(), regUser.getPhone(), regUser.getEmail(), date);
                         try {
                             articleFacade.create(newArticle);
                             request.setAttribute("info", "Объявление успешно добавлено.");
@@ -100,7 +98,7 @@ public class ArticleController extends HttpServlet {
                         }
                         getServletContext().setAttribute("articles", articleFacade.findAll());
                         request.getServletContext().getRequestDispatcher("/WEB-INF/user/user.jsp").forward(request, response);
-                        
+
                     } else if ("/editArticle".equals(userPath)) {
                         String articleId = request.getParameter("id");
                         Article article = articleFacade.find(new Long(articleId));
@@ -136,7 +134,7 @@ public class ArticleController extends HttpServlet {
                         Float price = parseFloat(request.getParameter("price"));
                         String checkTime = request.getParameter("checkTime");
                         String moreInfo = request.getParameter("moreInfo");
-                        String image = request.getParameter("fileName");
+                        //String image = request.getParameter("fileNames");
 
                         Date date = new Date();
                         Article updateArticle = articleFacade.find(new Long(articleId));
@@ -166,7 +164,7 @@ public class ArticleController extends HttpServlet {
                         updateArticle.setPrice(price);
                         updateArticle.setCheckTime(checkTime);
                         updateArticle.setMoreInfo(moreInfo);
-                        updateArticle.setImage(image);
+                        //updateArticle.setImages(images);
 
                         updateArticle.setUserName(regUser.getLogin());
                         updateArticle.setDate(date);

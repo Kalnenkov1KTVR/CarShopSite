@@ -35,7 +35,30 @@
                 <label>Дата добавления: </label>
                 ${article.date}
                 <div class="row span4">
-                    <div class="thumb row" ><a href=""><img src="fileServlet/${article.image}" width="275" height="200"></a></div>
+
+                    <c:forEach var="image" items="${article.images}" varStatus="status">
+                        <div class="thumb row" ><a href="" type="button" data-toggle="modal" data-target="#enlarge-${status.index}">
+                                <img src="fileServlet/${image}" width="275" height="200"></a></div>
+
+                        <!-- big picture modal -->
+                        <div class="modal fade" id="enlarge-${status.index}" role="dialog">
+                            <div class="modal-dialog" style="width: 95%">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn btn-danger" style="float: right" data-dismiss="modal">X</button>
+                                    </div>
+                                    <img src="fileServlet/${image}" width="100%">
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- modal end -->
+
+                    </c:forEach>
+
+
 
                 </div>
                 <div class="row span4" style="margin-right: 30px">

@@ -5,12 +5,16 @@
  */
 package controller;
 
+import entity.User;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 @WebServlet(name = "FileUploadController", urlPatterns = {"/upload", "/uploadPage"})
@@ -45,48 +50,69 @@ public class FileUploadController extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/admin/uploadFile.jsp").forward(request, response);
             return;
         } else {
+
             // Укажите в переменной path путь к каталогу, где будут храниться загруженные файлы (изображения)
             // Не забудьте дать права этой директории на запись чтение и исполнение (chmod 777)
             final String path = "C:\\images";
-            final Part filePart = request.getPart("file");
-            final String fileName = (String) getFileName(filePart);
+           
 
-            OutputStream out = null;
-            InputStream filecontent = null;
+            String nameString = "<label>Загружены файлы:</label>";
+            List<String> imageList = new ArrayList<>();
+            //Collection<Part> Parts = request.getParts();
+            List<Part> Parts = (List<Part>) request.getParts();
+            
+           // for (Part filePart : Parts) {
 
-            try {
-                out = new FileOutputStream(new File(path + File.separator
-                        + fileName));
-                filecontent = filePart.getInputStream();
+            for (int i = 0; i < Parts.size()-1; i++) {
+                Part filePart = Parts.get(i);
+                
+           // }
+            
+                String fileName = (String) getFileName(filePart);
 
-                int read = 0;
-                final byte[] bytes = new byte[1024];
+                OutputStream out = null;
+                InputStream filecontent = null;
 
-                while ((read = filecontent.read(bytes)) != -1) {
-                    out.write(bytes, 0, read);
+                try {
+                    out = new FileOutputStream(new File(path + File.separator
+                            + fileName));
+                    filecontent = filePart.getInputStream();
+
+                    int read = 0;
+                    final byte[] bytes = new byte[1024];
+
+                    while ((read = filecontent.read(bytes)) != -1) {
+                        out.write(bytes, 0, read);
+                    }
+
+                    LOGGER.log(Level.INFO, "Файл {0} начал загружаться в {1}",
+                            new Object[]{fileName, path});
+                } catch (FileNotFoundException fne) {
+                    LOGGER.log(Level.SEVERE, "Проблемы загрузки файла. Error: {0}",
+                            new Object[]{fne.getMessage()});
+                } finally {
+                    if (out != null) {
+                        out.close();
+                    }
+                    if (filecontent != null) {
+                        filecontent.close();
+                    }
+
                 }
-
-                LOGGER.log(Level.INFO, "Файл {0} начал загружаться в {1}",
-                        new Object[]{fileName, path});
-            } catch (FileNotFoundException fne) {
-                LOGGER.log(Level.SEVERE, "Проблемы загрузки файла. Error: {0}",
-                        new Object[]{fne.getMessage()});
-            } finally {
-                if (out != null) {
-                    out.close();
-                }
-                if (filecontent != null) {
-                    filecontent.close();
+                if (!"".equals(fileName)) {
+                    nameString = nameString + "<br>" + fileName;
+                    imageList.add(fileName);
+                } else {
+                    request.setAttribute("info", "Не выбран файл для загрузки!");
                 }
 
             }
-            if (!"".equals(fileName)) {
-                request.setAttribute("fileName", fileName);
-                request.setAttribute("linkImg", path + File.separator + fileName);
-                request.setAttribute("info", "Файл загружен. Имя файла: " + fileName);
-            } else {
-                request.setAttribute("info", "Не выбран файл для загрузки!");
-            }
+
+            request.setAttribute("info", nameString);
+            
+            HttpSession sessionBox = request.getSession(false);
+            sessionBox.setAttribute("imageList", imageList);
+            
             request.getRequestDispatcher("/newarticle").forward(request, response);
         }
     }
