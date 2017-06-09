@@ -13,7 +13,14 @@
             <div class="row">
                 <h2>Привет, ${username}!</h2>
                 Редактировать объявление ${article.mark} ${article.model}<br>
-                <a href="uploadPage" name="upload_file">Загрузить файл</a>
+
+
+                <h4>Загрузить файл:</h4>
+                <form method="POST" action="upload" enctype="multipart/form-data" >
+                    Выберите файл в вашей файловой системе:
+                    <input type="file" name="file" id="file" multiple="true"/><br>
+                    <input type="submit" value="Загрузить" name="upload" id="upload" />
+                </form>
 
                 <p>${info}</p>
             </div>

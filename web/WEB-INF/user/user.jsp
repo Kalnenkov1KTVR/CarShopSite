@@ -14,7 +14,7 @@
                 <c:forEach var="article" items="${articles}" varStatus="status">
                     <c:if test="${regUser.id eq article.userId}">
                         <p>
-                            <a href="user?article_id=${article.id}">${status.index+1}. ${article.model}</a>
+                            <a href="user?article_id=${article.id}">${status.index+1}. ${article.mark} ${article.model} </a>
                             <a href="deletearticle?id=${article.id}">Удалить</a>
                             <a href="editArticle?id=${article.id}">Редактировать</a>
                         </p>

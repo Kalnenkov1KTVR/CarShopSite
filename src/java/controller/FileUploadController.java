@@ -45,11 +45,7 @@ public class FileUploadController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if ("/uploadPage".equals(request.getServletPath())) {
-            //Загружаем страничку выбора файлов
-            request.getRequestDispatcher("/WEB-INF/admin/uploadFile.jsp").forward(request, response);
-            return;
-        } else {
+        if ("/upload".equals(request.getServletPath())) {
 
             // Укажите в переменной path путь к каталогу, где будут храниться загруженные файлы (изображения)
             // Не забудьте дать права этой директории на запись чтение и исполнение (chmod 777)
