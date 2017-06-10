@@ -143,7 +143,7 @@
                 </div>
                 <div class="row">
                     <label class="span3">Объём двигателя (л):</label>
-                    <input type="number" class="span5 form-control" name="engineVolume" id="engineVolume" required value="${article.engineVolume}">
+                    <input type="text" class="span5 form-control" name="engineVolume" id="engineVolume" required value="${article.engineVolume}">
                 </div>
                 <div class="row">
                     <label class="span3">Тип двигателя:</label>
