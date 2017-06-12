@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Контроллер управляет следующими действиями администратора:
+ * создание и удаление групп и перемещение пользователей в группы
  */
 package controller;
 
